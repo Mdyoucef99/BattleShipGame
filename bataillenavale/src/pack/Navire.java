@@ -51,11 +51,9 @@ public class Navire {
 			
 		}
 		
-	
+
 		
 	}
-	
-
 	
 	
 	

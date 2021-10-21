@@ -57,6 +57,7 @@ public class UtilitaireGrilleGui {
         {
         	
         	gui.setCouleurFond(navire.debut,navire.couleur);
+        		
         	
     	}
 
