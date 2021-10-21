@@ -52,6 +52,13 @@ public class UtilitaireGrilleGui {
 		// À vous de jouer
 	  }
         
+        
+        public static void montrerNavire(Navire navire, GrilleGui gui)
+        {
+        	
+        	gui.setCouleurFond(navire.debut,navire.couleur);
+        	
+    	}
 
 
 

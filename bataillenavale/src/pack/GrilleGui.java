@@ -416,7 +416,7 @@ public class GrilleGui  implements Runnable{
 		 * @param x La position en colonne
 		 * @param valeur La valeur à afficher
 		 */
-		private MonJButton(int ligne, 
+		private MonJButton(int ligne,  
 				           int colonne,
 				           String valeur, 
 				           Color couleurTexte, 
