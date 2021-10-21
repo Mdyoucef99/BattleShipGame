@@ -240,8 +240,9 @@ public class GrilleGui  implements Runnable{
 	 * @param couleur La nouvelle couleur
 	 */
 	public void setCouleurFond(Coord c, Color couleurFond){
-		
+
 	        grille[c.ligne][c.colonne].setBackground(couleurFond);
+	      
 	}
 
 	/**

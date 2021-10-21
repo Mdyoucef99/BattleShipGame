@@ -123,8 +123,8 @@ public class UtilitaireGrilleGui {
 	public static void setCouleurFondCase(GrilleGui gui, 
 			                              Coord coord,	
 			                              Color couleur){
-		 
-		  gui.setCouleurFond(coord,  couleur);
+		
+		  gui.setCouleurFond(coord, couleur);
 	}
 
 	/**

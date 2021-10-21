@@ -9,7 +9,7 @@ public class Navire {
 	public Coord fin;
 	public int taille=0; 
 	public Color couleur;
-	public ArrayList list;
+	public ArrayList Couptouche;
 	
 	
 	public Navire(String nom, Coord debut, Coord fin, Color couleur) throws Exception
@@ -40,7 +40,6 @@ public class Navire {
 		}
 		
 		
-		
 		if(debut.ligne == fin.ligne) 
 		{
 			taille = fin.colonne - debut.colonne +1;
@@ -51,7 +50,13 @@ public class Navire {
 			taille = fin.ligne - debut.ligne +1;
 			
 		}
-			
+		
+	
+		
 	}
+	
+
+	
+	
 	
 }
