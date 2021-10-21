@@ -53,11 +53,38 @@ public class UtilitaireGrilleGui {
 	  }
         
         
+        
+        //Tester montrer navire 
         public static void montrerNavire(Navire navire, GrilleGui gui)
         {
-        	
-        	gui.setCouleurFond(navire.debut,navire.couleur);
+        	if(navire.debut.ligne==navire.fin.ligne) 
+        	{
+        		System.out.println("SAME LIGNE ");
         		
+        		for(int i=navire.debut.colonne;i<=navire.fin.colonne;i++) 
+        		{
+        			System.out.println(i);
+        			int tempcolonne =+ navire.fin.colonne;
+        			Coord temp = new Coord(i,tempcolonne);
+        			gui.setCouleurFond(temp,navire.couleur);
+        			
+        		}
+        		
+        	}
+        	else if(navire.debut.colonne==navire.fin.colonne) 
+        	{
+                    System.out.println("SAME COLONNE ");
+        		
+        		for(int i=navire.debut.ligne;i<=navire.fin.ligne;i++) 
+        		{
+        			System.out.println(i);
+        			int templigne =+ navire.fin.ligne;
+        			Coord temp = new Coord(templigne,i);
+        			gui.setCouleurFond(temp,navire.couleur);
+        			
+        		}
+        		
+        	}
         	
     	}
 

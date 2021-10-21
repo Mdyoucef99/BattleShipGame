@@ -18,8 +18,8 @@ public class Navire {
 		this.debut=debut;
 		this.fin=fin;
 		this.couleur = couleur;
-		
-		if(debut.ligne > 1 && debut.colonne != fin.colonne) 
+	
+		/*if(debut.ligne > 1 && debut.colonne != fin.colonne) 
 		{
 			throw new Exception("Coordonnées NORD_SUD invalide");
 		}
@@ -39,7 +39,7 @@ public class Navire {
 			throw new Exception(" Colonne invalide");
 		}
 		
-		
+		*/
 		if(debut.ligne == fin.ligne) 
 		{
 			taille = fin.colonne - debut.colonne +1;
