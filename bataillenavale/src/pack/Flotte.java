@@ -1,8 +1,15 @@
 package pack;
- 
+
+import java.util.ArrayList;
+
 public class Flotte {
 	
-	Navire[] flotte; 
+	public Flotte() 
+	{
+		
+		
+	}
+	
 	
 	
 	public boolean dejaRecuCoup(Coord tir) 
@@ -17,16 +24,12 @@ public class Flotte {
 		return false;
 	}
 	
-	public Navire[] getTabNavires() 
-	{
-		
-		return flotte;
-		
-	}
 	
 	public boolean leTirTouche(Coord tir) 
 	{
 		
 		return false;
 	}
+	
+	
 }

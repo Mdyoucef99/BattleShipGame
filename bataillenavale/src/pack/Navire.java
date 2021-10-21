@@ -28,8 +28,8 @@ public class Navire {
 		{
 			throw new Exception("Coordonnées EST_OUEST invalide");
 		}
-		
-		else if(debut.ligne > Constantes.TAILLE || debut.ligne > fin.ligne) 
+		*/
+		 if(debut.ligne > Constantes.TAILLE || debut.ligne > fin.ligne) 
 		{
 			throw new Exception(" Ligne invalide");
 		}
@@ -39,7 +39,7 @@ public class Navire {
 			throw new Exception(" Colonne invalide");
 		}
 		
-		*/
+		
 		if(debut.ligne == fin.ligne) 
 		{
 			taille = fin.colonne - debut.colonne +1;
@@ -51,9 +51,11 @@ public class Navire {
 			
 		}
 		
+		System.out.println("Taille du navire est : "+ taille);
 
 		
 	}
+	
 	
 	
 	

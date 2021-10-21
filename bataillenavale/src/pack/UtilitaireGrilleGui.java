@@ -63,23 +63,25 @@ public class UtilitaireGrilleGui {
         		
         		for(int i=navire.debut.colonne;i<=navire.fin.colonne;i++) 
         		{
-        			System.out.println(i);
+        			
         			int tempcolonne =+ navire.fin.colonne;
         			Coord temp = new Coord(i,tempcolonne);
+        			System.out.println("LES COORDONNES SONT : " + temp.toString());
         			gui.setCouleurFond(temp,navire.couleur);
         			
         		}
         		
         	}
+        	
         	else if(navire.debut.colonne==navire.fin.colonne) 
         	{
                     System.out.println("SAME COLONNE ");
         		
         		for(int i=navire.debut.ligne;i<=navire.fin.ligne;i++) 
         		{
-        			System.out.println(i);
         			int templigne =+ navire.fin.ligne;
         			Coord temp = new Coord(templigne,i);
+        			System.out.println("LES COORDONNES SONT : " + temp.toString());
         			gui.setCouleurFond(temp,navire.couleur);
         			
         		}
