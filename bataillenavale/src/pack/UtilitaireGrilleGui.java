@@ -52,6 +52,43 @@ public class UtilitaireGrilleGui {
 		// À vous de jouer
 	  }
         
+        
+        
+        //Tester montrer navire 
+        public static void montrerNavire(Navire navire, GrilleGui gui)
+        {
+        	if(navire.debut.ligne==navire.fin.ligne) 
+        	{
+        		System.out.println("SAME LIGNE ");
+        		
+        		for(int i=navire.debut.colonne;i<=navire.fin.colonne;i++) 
+        		{
+        			
+        			int tempcolonne =+ navire.fin.colonne;
+        			Coord temp = new Coord(i,tempcolonne);
+        			System.out.println("LES COORDONNES SONT : " + temp.toString());
+        			gui.setCouleurFond(temp,navire.couleur);
+        			
+        		}
+        		
+        	}
+        	
+        	else if(navire.debut.colonne==navire.fin.colonne) 
+        	{
+                    System.out.println("SAME COLONNE ");
+        		
+        		for(int i=navire.debut.ligne;i<=navire.fin.ligne;i++) 
+        		{
+        			int templigne =+ navire.fin.ligne;
+        			Coord temp = new Coord(templigne,i);
+        			System.out.println("LES COORDONNES SONT : " + temp.toString());
+        			gui.setCouleurFond(temp,navire.couleur);
+        			
+        		}
+        		
+        	}
+        	
+    	}
 
 
 
@@ -116,8 +153,8 @@ public class UtilitaireGrilleGui {
 	public static void setCouleurFondCase(GrilleGui gui, 
 			                              Coord coord,	
 			                              Color couleur){
-		 
-		  gui.setCouleurFond(coord,  couleur);
+		
+		  gui.setCouleurFond(coord, couleur);
 	}
 
 	/**

@@ -28,7 +28,7 @@ import javax.swing.SwingUtilities;
  * @author Pierre Bélisle (copyright 2016)
  * @version Copyright A2021
  */
-public class GrilleGui  implements Runnable{
+public class GrilleGui  /*implements Runnable*/{
 
 	/*
 	 * STRATÉGIE : On met des boutons dans un panneau mais on les retient aussi 
@@ -138,7 +138,7 @@ public class GrilleGui  implements Runnable{
 		// On crée le panneau du bas avec les boutons de menu.
 
 		// On affiche le cadre dans le EDT.
-		SwingUtilities.invokeLater(this);
+		//SwingUtilities.invokeLater(this);
 
 	}
 
@@ -240,8 +240,9 @@ public class GrilleGui  implements Runnable{
 	 * @param couleur La nouvelle couleur
 	 */
 	public void setCouleurFond(Coord c, Color couleurFond){
-		
+
 	        grille[c.ligne][c.colonne].setBackground(couleurFond);
+	      
 	}
 
 	/**
@@ -416,7 +417,7 @@ public class GrilleGui  implements Runnable{
 		 * @param x La position en colonne
 		 * @param valeur La valeur à afficher
 		 */
-		private MonJButton(int ligne, 
+		private MonJButton(int ligne,  
 				           int colonne,
 				           String valeur, 
 				           Color couleurTexte, 
