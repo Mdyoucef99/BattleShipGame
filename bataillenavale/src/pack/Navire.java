@@ -57,6 +57,31 @@ public class Navire {
 	}
 	
 	
+	public void test() 
+	{
+		Coord yo = new Coord(3,9);
+		System.out.print("POSITION TOUCHES DANS LA COORDONNE "+positionTouche(yo));
+	}
+	
+	
+	private boolean positionTouche(Coord tir) 
+	{
+		if (tir.ligne>= debut.ligne && tir.ligne <= fin.ligne) 
+		{
+			 
+			return true;
+		}
+		
+		else if (tir.colonne>= debut.colonne && tir.colonne <= fin.colonne) 
+		{
+			
+			return true;
+		}
+		
+		else {return false;}
+		
+	}
+	
 	
 	
 }

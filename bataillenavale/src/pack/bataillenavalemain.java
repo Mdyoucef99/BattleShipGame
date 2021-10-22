@@ -10,6 +10,8 @@ public class bataillenavalemain {
 		Flotte flottemain = new Flotte();
 		UtilitaireGrilleGui.montrerFlotte(flottemain, grille);
 		
+		
+		
 	}
 
 }

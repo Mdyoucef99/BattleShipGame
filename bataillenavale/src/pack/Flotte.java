@@ -54,6 +54,7 @@ public class Flotte {
 		
 		Navire porteavions = new Navire(Constantes.PORTE_AVION,cord1,cord2,Color.RED);
 		list.add(porteavions);
+		porteavions.test();
 		Navire croiseur = new Navire(Constantes.CROISEUR,cord3,cord4,Color.BLUE);
 		list.add(croiseur);
 		Navire contretorpilleurs = new Navire(Constantes.DESTROYER,cord5,cord6,Color.YELLOW);
