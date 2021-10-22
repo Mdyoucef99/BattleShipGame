@@ -40,7 +40,10 @@ public class UtilitaireGrilleGui {
 	 */
 	
 	
-        public static void montrerFlotte(Flotte flotte, GrilleGui gui){
+	
+	
+        public static void montrerFlotte(Flotte flotte, GrilleGui gui)
+        {
 
 		/*
 		 * Stratégie : Pour chaque Navire de la grille de jeu, on colore le fond
@@ -54,7 +57,6 @@ public class UtilitaireGrilleGui {
         	
         	for(Navire nav : flotte.list) 
         	{
-        	
         		if(nav.debut.ligne==nav.fin.ligne) 
             	{
             		System.out.println("SAME LIGNE ");
@@ -64,7 +66,7 @@ public class UtilitaireGrilleGui {
             			
             			int tempcolonne =+ nav.fin.colonne;
             			Coord temp = new Coord(i,tempcolonne);
-            			System.out.println("LES COORDONNES SONT : " + temp.toString());
+            			System.out.println("LES COORDONNES SONT : " + temp.toString()+ "POUR LE NAVIRE "+nav.nom);
             			gui.setCouleurFond(temp,nav.couleur);
             			
             		}
@@ -79,7 +81,7 @@ public class UtilitaireGrilleGui {
             		{
             			int templigne =+ nav.fin.ligne;
             			Coord temp = new Coord(templigne,i);
-            			System.out.println("LES COORDONNES SONT : " + temp.toString());
+            			System.out.println("LES COORDONNES SONT : " + temp.toString()+ "POUR LE NAVIRE "+nav.nom);
             			gui.setCouleurFond(temp,nav.couleur);
             			
             		}
@@ -91,6 +93,8 @@ public class UtilitaireGrilleGui {
 
         	
 	  }
+        
+        
         
         
         
@@ -131,6 +135,9 @@ public class UtilitaireGrilleGui {
     	}
 
 
+        
+        
+        
 
 	/**
 	 * Procédure pour changer la valeur d'une case du gui.
