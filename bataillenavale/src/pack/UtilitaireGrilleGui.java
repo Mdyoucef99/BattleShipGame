@@ -50,6 +50,46 @@ public class UtilitaireGrilleGui {
 
 
 		// À vous de jouer
+        	
+        	
+        	for(Navire nav : flotte.list) 
+        	{
+        	
+        		if(nav.debut.ligne==nav.fin.ligne) 
+            	{
+            		System.out.println("SAME LIGNE ");
+            		
+            		for(int i=nav.debut.colonne;i<=nav.fin.colonne;i++) 
+            		{
+            			
+            			int tempcolonne =+ nav.fin.colonne;
+            			Coord temp = new Coord(i,tempcolonne);
+            			System.out.println("LES COORDONNES SONT : " + temp.toString());
+            			gui.setCouleurFond(temp,nav.couleur);
+            			
+            		}
+            		
+            	}
+            	
+            	else if(nav.debut.colonne==nav.fin.colonne) 
+            	{
+                        System.out.println("SAME COLONNE ");
+            		
+            		for(int i=nav.debut.ligne;i<=nav.fin.ligne;i++) 
+            		{
+            			int templigne =+ nav.fin.ligne;
+            			Coord temp = new Coord(templigne,i);
+            			System.out.println("LES COORDONNES SONT : " + temp.toString());
+            			gui.setCouleurFond(temp,nav.couleur);
+            			
+            		}
+            		
+            	}
+        		
+        		
+        	}
+
+        	
 	  }
         
         

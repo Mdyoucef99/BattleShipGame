@@ -12,7 +12,7 @@ public class Navire {
 	public ArrayList Couptouche;
 	
 	
-	public Navire(String nom, Coord debut, Coord fin, Color couleur) throws Exception
+	public Navire(String nom, Coord debut, Coord fin, Color couleur) 
 	{
 		this.nom = nom;
 		this.debut=debut;
@@ -31,12 +31,12 @@ public class Navire {
 		*/
 		 if(debut.ligne > Constantes.TAILLE || debut.ligne > fin.ligne) 
 		{
-			throw new Exception(" Ligne invalide");
+			 throw new IllegalArgumentException("ligne invalide");
 		}
 		
 		else if(debut.colonne > Constantes.TAILLE || debut.colonne > fin.colonne) 
 		{
-			throw new Exception(" Colonne invalide");
+			throw new IllegalArgumentException("Colonne invalide");
 		}
 		
 		
