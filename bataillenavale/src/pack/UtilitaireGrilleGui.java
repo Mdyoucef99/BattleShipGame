@@ -63,10 +63,9 @@ public class UtilitaireGrilleGui {
             		
             		for(int i=nav.debut.colonne;i<=nav.fin.colonne;i++) 
             		{
-            			
-            			int tempcolonne =+ nav.fin.colonne;
-            			Coord temp = new Coord(i,tempcolonne);
-            			System.out.println("LES COORDONNES SONT : " + temp.toString()+ "POUR LE NAVIRE "+nav.nom);
+            			System.out.print(i);
+            			Coord temp = new Coord(nav.debut.ligne,i);
+            			System.out.println("LES COORDONNES SONT : " + temp.toString());
             			gui.setCouleurFond(temp,nav.couleur);
             			
             		}
@@ -79,15 +78,13 @@ public class UtilitaireGrilleGui {
             		
             		for(int i=nav.debut.ligne;i<=nav.fin.ligne;i++) 
             		{
-            			int templigne =+ nav.fin.ligne;
-            			Coord temp = new Coord(templigne,i);
-            			System.out.println("LES COORDONNES SONT : " + temp.toString()+ "POUR LE NAVIRE "+nav.nom);
+            			Coord temp = new Coord(i,nav.debut.colonne);
+            			System.out.println("LES COORDONNES SONT : " + temp.toString());
             			gui.setCouleurFond(temp,nav.couleur);
             			
             		}
             		
             	}
-        		
         		
         	}
 
@@ -107,9 +104,8 @@ public class UtilitaireGrilleGui {
         		
         		for(int i=navire.debut.colonne;i<=navire.fin.colonne;i++) 
         		{
-        			
-        			int tempcolonne =+ navire.fin.colonne;
-        			Coord temp = new Coord(i,tempcolonne);
+        			System.out.print(i);
+        			Coord temp = new Coord(navire.debut.ligne,i);
         			System.out.println("LES COORDONNES SONT : " + temp.toString());
         			gui.setCouleurFond(temp,navire.couleur);
         			
@@ -123,8 +119,7 @@ public class UtilitaireGrilleGui {
         		
         		for(int i=navire.debut.ligne;i<=navire.fin.ligne;i++) 
         		{
-        			int templigne =+ navire.fin.ligne;
-        			Coord temp = new Coord(templigne,i);
+        			Coord temp = new Coord(i,navire.debut.colonne);
         			System.out.println("LES COORDONNES SONT : " + temp.toString());
         			gui.setCouleurFond(temp,navire.couleur);
         			

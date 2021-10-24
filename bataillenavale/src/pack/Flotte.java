@@ -42,7 +42,7 @@ public class Flotte {
 		Coord cord2 = new Coord(1,8);
 		
 		Coord cord3 = new Coord(1,4);
-		Coord cord4 = new Coord(3,4);
+		Coord cord4 = new Coord(2,4);
 		
 		Coord cord5 = new Coord(3,1);
 		Coord cord6 = new Coord(3,5);

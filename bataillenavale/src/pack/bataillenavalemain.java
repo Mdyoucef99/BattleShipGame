@@ -8,7 +8,9 @@ public class bataillenavalemain {
 		// TODO Auto-generated method stub
 		GrilleGui grille = new GrilleGui(Constantes.TAILLE,Constantes.TAILLE,Color.BLACK,Color.WHITE,Constantes.OPTIONS,1);
 		grille.run();
+		
 		Flotte flottemain = new Flotte();
+
 		UtilitaireGrilleGui.montrerFlotte(flottemain, grille);
 		
 		
