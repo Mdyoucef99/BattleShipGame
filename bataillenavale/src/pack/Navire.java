@@ -1,3 +1,4 @@
+package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,11 @@ public class Navire {
 		int nbColonne = fin.colonne-debut.colonne+1;
 		
 		if(nbLigne>1 && debut.colonne != fin.colonne ) {
-			throw new IllegalArgumentException("Coordonnées NORD_SUD invalide");
+			throw new IllegalArgumentException("Coordonnï¿½es NORD_SUD invalide");
 		}
 		
 		if(nbColonne>1 && debut.ligne != fin.ligne ) {
-			throw new IllegalArgumentException("Coordonnées EST_OUEST invalide");
+			throw new IllegalArgumentException("Coordonnï¿½es EST_OUEST invalide");
 		}
 		
 		if(debut.ligne > Constantes.TAILLE || debut.ligne > fin.ligne) {
@@ -48,11 +49,6 @@ public class Navire {
 		this.nom = nom;
 		this.couleur = couleur;
 		
-		//test
-		Coord test = new Coord(3,1);
-		list.add(test);
-		list.add(test);
-		list.add(test);
 		
 	}
 	
@@ -63,12 +59,23 @@ public class Navire {
 		}
 		return estcoule;
 	}
+	
+	
 	// ne marche pas
-	public boolean dejaRecuTir(Coord tir) {
-		boolean dejaRecuTir;
-		dejaRecuTir =  list.contains(tir);
+	public boolean dejaRecuTir(Coord tir) 
+	{
+		boolean dejaRecuTir=false;
+		
+		if(list.contains(tir)) 
+		{
+			dejaRecuTir=true;
+		}
+		
 		return dejaRecuTir;
 	}
+	
+	
+	
 	
 	public boolean tirAtouche(Coord tir) {
 		boolean tirAtouche = false;
@@ -129,14 +136,20 @@ public class Navire {
          Navire test2 = new Navire("La perle noire",debut1,fin2,Color.BLACK);
          
          //System.out.println(test1.positionTouche(debut1));
-         //System.out.println(test1.dejaRecuTir(tir));
+       
          //System.out.println(tir);
          //System.out.println(test1.chevauche(test2));   
          //System.out.println(test1.estCoule());
          
          //test1.tirAtouche(tir);
          
+         
+         
+         
+         test1.list.add(tir);
          test1.afficherList();
+         System.out.println(test1.dejaRecuTir(tir));
+         
     }
 	
 }
