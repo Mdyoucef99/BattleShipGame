@@ -90,34 +90,6 @@ public class Navire {
 	}
 	
 	
-	public boolean estCoule() 
-	{
-		int j=0;
-		for(Coord cord : Coordlist) 
-		{
-			for(int i=debut.colonne;i<=fin.colonne;i++) 
-			{
-				int tempcolonne =+ fin.colonne;
-				Coord temp = new Coord(i,tempcolonne);
-				if(cord ==temp) 
-				{
-					j++;
-				}
-			}
-			
-		}
-		
-		if(j==taille) 
-		{
-			System.out.println("Navire a coule ");
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
-		
-	}
 	
 	
 	

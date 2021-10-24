@@ -55,7 +55,7 @@ public class UtilitaireGrilleGui {
 		// À vous de jouer
         	
         	
-        	for(Navire nav : flotte.list) 
+        	for(Navire nav : flotte.Navirelist) 
         	{
         		if(nav.debut.ligne==nav.fin.ligne) 
             	{
@@ -63,7 +63,6 @@ public class UtilitaireGrilleGui {
             		
             		for(int i=nav.debut.colonne;i<=nav.fin.colonne;i++) 
             		{
-            			System.out.print(i);
             			Coord temp = new Coord(nav.debut.ligne,i);
             			System.out.println("LES COORDONNES SONT : " + temp.toString());
             			gui.setCouleurFond(temp,nav.couleur);
@@ -91,9 +90,7 @@ public class UtilitaireGrilleGui {
         	
 	  }
         
-        
-        
-        
+   
         
         //Tester montrer navire 
         public static void montrerNavire(Navire navire, GrilleGui gui)
