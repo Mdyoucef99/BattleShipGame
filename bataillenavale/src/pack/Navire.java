@@ -1,125 +1,142 @@
-package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Navire {
-
+	
 	public String nom;
 	public Coord debut;
 	public Coord fin;
 	public int taille=0; 
 	public Color couleur;
-	List<Coord> Coordlist = new ArrayList<Coord>();
+	List<Coord> list = new ArrayList<Coord>();
 	
-	
-	public Navire(String nom, Coord debut, Coord fin, Color couleur) 
-	{
-		this.nom = nom;
-		this.debut=debut;
-		this.fin=fin;
-		this.couleur = couleur;
-	/*
-		if(debut.ligne-fin.ligne+1 > 1 && debut.colonne != fin.colonne) 
-		{
+	public Navire(String nom,Coord debut,Coord fin,Color couleur) {
+		
+		int nbLigne = fin.ligne-debut.ligne+1;
+		int nbColonne = fin.colonne-debut.colonne+1;
+		
+		if(nbLigne>1 && debut.colonne != fin.colonne ) {
 			throw new IllegalArgumentException("Coordonnées NORD_SUD invalide");
 		}
 		
-		else if(debut.colonne - fin.colonne + 1 > 1 && debut.ligne != fin.ligne) 
-		{
+		if(nbColonne>1 && debut.ligne != fin.ligne ) {
 			throw new IllegalArgumentException("Coordonnées EST_OUEST invalide");
 		}
-		*/
 		
-		 if(debut.ligne > Constantes.TAILLE || debut.ligne > fin.ligne) 
-		{
+		if(debut.ligne > Constantes.TAILLE || debut.ligne > fin.ligne) {
 			 throw new IllegalArgumentException("ligne invalide");
 		}
 		
-		else if(debut.colonne > Constantes.TAILLE || debut.colonne > fin.colonne) 
-		{
+		else if(debut.colonne > Constantes.TAILLE || debut.colonne > fin.colonne) {
 			throw new IllegalArgumentException("Colonne invalide");
 		}
 		
 		
 		if(debut.ligne == fin.ligne) 
 		{
-			taille = fin.colonne - debut.colonne +1;
-		}
-		
+			this.taille = nbColonne;
+		}	
 		else if (debut.colonne == fin.colonne) 
 		{
-			taille = fin.ligne - debut.ligne +1;
+			this.taille = nbLigne;
 			
 		}
 		
-		System.out.println("Taille du navire  "+nom+ " est de : "+ taille);
-
+		this.debut = debut;
+		this.fin = fin;
+		this.nom = nom;
+		this.couleur = couleur;
+		
+		//test
+		Coord test = new Coord(3,1);
+		list.add(test);
+		list.add(test);
+		list.add(test);
 		
 	}
 	
-	
-	public void test() 
-	{
-		Coord yo = new Coord(3,9);
-		System.out.print("POSITION TOUCHES DANS LA COORDONNE "+positionTouche(yo));
+	public boolean estCoule() {
+		boolean estcoule = false;
+		if(list.size() == taille) {
+			estcoule = true;
+		}
+		return estcoule;
+	}
+	// ne marche pas
+	public boolean dejaRecuTir(Coord tir) {
+		boolean dejaRecuTir;
+		dejaRecuTir =  list.contains(tir);
+		return dejaRecuTir;
 	}
 	
-	
-	
-	private boolean positionTouche(Coord tir) 
-	{
-		
-		if (tir.ligne>= debut.ligne && tir.ligne <= fin.ligne) 
-		{
-			 
-			return true;
+	public boolean tirAtouche(Coord tir) {
+		boolean tirAtouche = false;
+		if(!estCoule()) {
+			if(!dejaRecuTir(tir)) {
+				if(positionTouche(tir)) {
+					list.add(tir);
+					tirAtouche = true;
+				}		
+			}		
 		}
-		
-		else if (tir.colonne>= debut.colonne && tir.colonne <= fin.colonne) 
-		{
-			
-			return true;
-		}
-		
-		else 
-		{
-			return false;
-		}
-		
+		return tirAtouche;
 	}
 	
-	
-	public boolean estCoule() 
-	{
-		int j=0;
-		for(Coord cord : Coordlist) 
-		{
-			for(int i=debut.colonne;i<=fin.colonne;i++) 
-			{
-				int tempcolonne =+ fin.colonne;
-				Coord temp = new Coord(i,tempcolonne);
-				if(cord ==temp) 
-				{
-					j++;
+	public boolean chevauche(Navire navire) {
+		boolean chevauche = false;
+		Coord coord = new Coord();
+		for(int i = navire.debut.ligne; i <= navire.fin.ligne; i++) {
+			for(int j = navire.debut.colonne; j <= navire.fin.colonne; j++) {
+				coord.ligne = i;
+				coord.colonne = j;
+				if(positionTouche(coord)){
+					chevauche = true;
 				}
 			}
-			
 		}
-		
-		if(j==taille) 
-		{
-			System.out.println("Navire a coule ");
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
-		
+		return chevauche;
 	}
 	
+	private boolean positionTouche(Coord tir) {	
+		boolean positionTouche= false;
+		if (tir.ligne>= debut.ligne && tir.ligne <= fin.ligne && debut.ligne !=fin.ligne) {	 
+			positionTouche = true;
+		}
+		else if (tir.colonne>= debut.colonne && tir.colonne <= fin.colonne && debut.colonne !=fin.colonne) {		
+			positionTouche = true;
+		}
+		return positionTouche;
+	}
 	
+	public void afficherList() {
+		for(Coord elem: list){
+	       	 System.out.println (elem);
+	    }
+	}
 	
-
+	public static void main(String[] args){
+		
+         Coord debut = new Coord(1,1);
+         Coord fin = new Coord(4,1);
+         
+         Coord debut1 = new Coord(5,1);
+         Coord fin2 = new Coord(7,1);
+         
+         Coord tir = new Coord(3,1);
+           
+         Navire test1 = new Navire("La perle noire",debut,fin,Color.BLACK);
+         Navire test2 = new Navire("La perle noire",debut1,fin2,Color.BLACK);
+         
+         //System.out.println(test1.positionTouche(debut1));
+         //System.out.println(test1.dejaRecuTir(tir));
+         //System.out.println(tir);
+         //System.out.println(test1.chevauche(test2));   
+         //System.out.println(test1.estCoule());
+         
+         //test1.tirAtouche(tir);
+         
+         test1.afficherList();
+    }
+	
 }
