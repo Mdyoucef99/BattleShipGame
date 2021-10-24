@@ -10,7 +10,7 @@ public class Navire {
 	public Coord fin;
 	public int taille=0; 
 	public Color couleur;
-	List<Coord> list = new ArrayList<Coord>();
+	List<Coord> Coordlist = new ArrayList<Coord>();
 	
 	
 	public Navire(String nom, Coord debut, Coord fin, Color couleur) 
@@ -66,6 +66,7 @@ public class Navire {
 	}
 	
 	
+	
 	private boolean positionTouche(Coord tir) 
 	{
 		
@@ -87,5 +88,38 @@ public class Navire {
 		}
 		
 	}
+	
+	
+	public boolean estCoule() 
+	{
+		int j=0;
+		for(Coord cord : Coordlist) 
+		{
+			for(int i=debut.colonne;i<=fin.colonne;i++) 
+			{
+				int tempcolonne =+ fin.colonne;
+				Coord temp = new Coord(i,tempcolonne);
+				if(cord ==temp) 
+				{
+					j++;
+				}
+			}
+			
+		}
+		
+		if(j==taille) 
+		{
+			System.out.println("Navire a coule ");
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+		
+	}
+	
+	
+	
 
 }
