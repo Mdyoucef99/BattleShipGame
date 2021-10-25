@@ -134,11 +134,11 @@ public class Navire {
          //System.out.println(test1.positionTouche(debut1));
        
          //System.out.println(tir);
-         System.out.println(test1.chevauche(test2));   
+         //System.out.println(test1.chevauche(test2));   
          //System.out.println(test1.estCoule());
          
-         test1.list.add(tir);
-        // System.out.println(test1.tirAtouche(tir));
+         //test1.list.add(tir);
+         System.out.println(test1.tirAtouche(tir));
          
          
          

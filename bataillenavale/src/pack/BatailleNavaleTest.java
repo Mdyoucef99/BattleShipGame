@@ -41,21 +41,33 @@ class BatailleNavaleTest {
 	{
 		 Coord debut = new Coord(2,1);
          Coord fin = new Coord(4,1);
-         
          Coord millieu = new Coord(3,1);
-         
          Navire test1 = new Navire("La perle noire",debut,fin,Color.BLACK);
+         
          test1.list.add(debut);
          test1.list.add(fin);
          test1.list.add(millieu);
          
          assertEquals(true,test1.estCoule());
          
-		
-		
+	
 	}
 	
 	
+	@Test
+	void test_tiratouche() //Test pour voir si la coord donné touche le navire sans le repéter
+	{
+		Coord debut = new Coord(2,1);
+        Coord fin = new Coord(4,1);
+		Navire test1 = new Navire("La perle noire",debut,fin,Color.BLACK);
+	    Coord tir = new Coord(2,1);
+	   // test1.list.add(tir);
+	    
+		assertEquals(true,test1.tirAtouche(tir));
+		
+		
+		
+	}
 	
 
 }
