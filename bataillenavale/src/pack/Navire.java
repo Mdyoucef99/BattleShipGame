@@ -61,7 +61,6 @@ public class Navire {
 	}
 	
 	
-	// ne marche pas
 	public boolean dejaRecuTir(Coord tir) 
 	{
 		boolean dejaRecuTir=false;
