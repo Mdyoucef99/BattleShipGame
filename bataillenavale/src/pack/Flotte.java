@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Flotte {
 	public static Random rand = new Random();
-	List<Navire> list = new ArrayList<Navire>();
+	List<Navire> Navirelist = new ArrayList<Navire>();
 	
 	public Flotte() 
 	{
@@ -16,18 +16,18 @@ public class Flotte {
 	}
 	
 	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = new Navire[list.size()]; 
-		 arrayBateau = list.toArray(arrayBateau); 
+		 Navire[] arrayBateau = new Navire[Navirelist.size()]; 
+		 arrayBateau = Navirelist.toArray(arrayBateau); 
 		 return arrayBateau;
 	 }
 	
+	 
 	public boolean dejaRecuCoup(Coord tir) 
 	{
 		boolean dejaRecuCoup = false;
-		for(Navire Navire : list) {
-			if(Navire.tirAtouche(tir) == true){
+		for(Navire Navire : Navirelist) {
+			if(Navire.dejaRecuTir(tir) == true){
 
-				
 				dejaRecuCoup = true;
 			}
 		}
@@ -42,11 +42,11 @@ public class Flotte {
 
 		int taille = 0;
 
-		for(Navire Navire : list) {
+		for(Navire Navire : Navirelist) {
 			if(Navire.estCoule() == true) {
 				
 				taille++;
-				if(taille == list.size()) {
+				if(taille == Navirelist.size()) {
 					
 					jeuTermine = true;
 				}
@@ -62,7 +62,7 @@ public class Flotte {
 	public boolean leTirTouche(Coord tir) 
 	{
 		boolean leTirTouche = false;
-		for(Navire Navire : list) {
+		for(Navire Navire : Navirelist) {
 			if(Navire.tirAtouche(tir) == true){
 
 				
@@ -156,7 +156,7 @@ public class Flotte {
  * on rajoute a la liste la bateau
  */
 		Navire porteavions = new Navire(Constantes.PORTE_AVION,cord1,cord2,Color.RED);
-		list.add(porteavions);
+		Navirelist.add(porteavions);
 		/*
 		 * 
 		 * Bateau 2
@@ -180,7 +180,7 @@ public class Flotte {
 		Coord cord3 = new Coord(x,y);
 		Coord cord4 = new Coord(x1,y1);	
 		Navire croiseur = new Navire(Constantes.CROISEUR,cord3,cord4,Color.BLUE);
-		list.add(croiseur);
+		Navirelist.add(croiseur);
 /*
  * Bateau 3
  */
@@ -203,7 +203,7 @@ public class Flotte {
 		Coord cord5 = new Coord(x,y);
 		Coord cord6 = new Coord(x1,y1);	
 		Navire contretorpilleurs = new Navire(Constantes.CROISEUR,cord5,cord6,Color.GREEN);
-		list.add(contretorpilleurs);
+		Navirelist.add(contretorpilleurs);
 		
 		/*
 		 * Bateau 4
@@ -227,7 +227,7 @@ public class Flotte {
 		Coord cord7 = new Coord(x,y);
 		Coord cord8 = new Coord(x1,y1);	
 		Navire sousmarin = new Navire(Constantes.SOUS_MARIN,cord7,cord8,Color.BLACK);
-		list.add(sousmarin);
+		Navirelist.add(sousmarin);
 
 		/*
 		 * Bateau 5
@@ -250,13 +250,13 @@ public class Flotte {
 		Coord cord9 = new Coord(x,y);
 		Coord cord10 = new Coord(x1,y1);	
 		Navire torpilleur = new Navire(Constantes.CUIRASSE,cord9,cord10,Color.ORANGE);
-		list.add(torpilleur);	
+		Navirelist.add(torpilleur);	
 		
 		/*
 		 * 
 		 * fonction chevauche imcomplet
 		 */
-		for(Navire nav : list) {
+		for(Navire nav : Navirelist) {
 			if(nav.chevauche(nav) == true) {
 				
 			}

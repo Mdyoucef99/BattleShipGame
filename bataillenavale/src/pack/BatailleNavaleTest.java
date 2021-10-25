@@ -44,9 +44,9 @@ class BatailleNavaleTest {
          Coord millieu = new Coord(3,1);
          Navire test1 = new Navire("La perle noire",debut,fin,Color.BLACK);
          
-         test1.list.add(debut);
-         test1.list.add(fin);
-         test1.list.add(millieu);
+         test1.Couplist.add(debut);
+         test1.Couplist.add(fin);
+         test1.Couplist.add(millieu);
          
          assertEquals(true,test1.estCoule());
          

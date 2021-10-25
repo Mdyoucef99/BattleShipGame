@@ -10,7 +10,7 @@ public class Navire {
 	public Coord fin;
 	public int taille=0; 
 	public Color couleur;
-	List<Coord> list = new ArrayList<Coord>();
+	List<Coord> Couplist = new ArrayList<Coord>();
 	
 	public Navire(String nom,Coord debut,Coord fin,Color couleur) {
 		
@@ -54,7 +54,7 @@ public class Navire {
 	
 	public boolean estCoule() {
 		boolean estcoule = false;
-		if(list.size() == taille) {
+		if(Couplist.size() == taille) {
 			estcoule = true;
 		}
 		return estcoule;
@@ -64,7 +64,7 @@ public class Navire {
 	public boolean dejaRecuTir(Coord tir) 
 	{
 		boolean dejaRecuTir=false;
-		if(list.contains(tir)) 
+		if(Couplist.contains(tir)) 
 		{
 			dejaRecuTir=true;
 		}
@@ -78,7 +78,7 @@ public class Navire {
 		if(!estCoule()) {
 			if(!dejaRecuTir(tir)) {
 				if(positionTouche(tir)) {
-					list.add(tir);
+					Couplist.add(tir);
 					tirAtouche = true;
 				}		
 			}		
@@ -113,7 +113,7 @@ public class Navire {
 	}
 	
 	public void afficherList() {
-		for(Coord elem: list){
+		for(Coord elem: Couplist){
 	       	 System.out.println (elem);
 	    }
 	}
