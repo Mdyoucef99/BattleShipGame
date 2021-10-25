@@ -11,9 +11,10 @@ public class bataillenavalemain {
 		Flotte flottemain = new Flotte();
 		UtilitaireGrilleGui.montrerFlotte(flottemain, grille);
 		
+		
 		Navire[] array= flottemain.getTabNavires();
 		
-		for (int i=0;i<flottemain.list.size();i++) 
+		for (int i=0;i<flottemain.Navirelist.size();i++) 
 		{
 			System.out.println("le nom  est "+ array[i].nom);
 			

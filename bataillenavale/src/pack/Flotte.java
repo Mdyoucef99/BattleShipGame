@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Flotte {
 	
-	List<Navire> list = new ArrayList<Navire>();
+	List<Navire> Navirelist = new ArrayList<Navire>();
 	
 	public Flotte() 
 	{
@@ -15,8 +15,8 @@ public class Flotte {
 	
 	 public Navire[] getTabNavires() 
 	 {
-		 Navire[] arrayBateau = new Navire[list.size()];
-		 arrayBateau = list.toArray(arrayBateau);
+		 Navire[] arrayBateau = new Navire[Navirelist.size()];
+		 arrayBateau = Navirelist.toArray(arrayBateau);
 		 return arrayBateau;
 	 }
 	 
@@ -24,10 +24,8 @@ public class Flotte {
 	public boolean dejaRecuCoup(Coord tir) 
 	{
 		boolean dejaRecuCoup = false;
-		for(Navire Navire : list) {
-			if(Navire.tirAtouche(tir) == true){
-
-				
+		for(Navire Navire : Navirelist) {
+			if(Navire.dejaRecuTir(tir)==true){
 				dejaRecuCoup = true;
 			}
 		}
@@ -42,15 +40,11 @@ public class Flotte {
 	{
 
 		boolean jeuTermine = false;
-
 		int taille = 0;
-
-		for(Navire Navire : list) {
+		for(Navire Navire : Navirelist) {
 			if(Navire.estCoule() == true) {
-				
 				taille++;
-				if(taille == list.size()) {
-					
+				if(taille == Navirelist.size()) {
 					jeuTermine = true;
 				}
 			}
@@ -65,19 +59,17 @@ public class Flotte {
 	public boolean leTirTouche(Coord tir) 
 	{
 		boolean leTirTouche = false;
-		for(Navire Navire : list) {
+		for(Navire Navire : Navirelist) {
 			if(Navire.tirAtouche(tir) == true){
-
-				
 				leTirTouche = true;
 			}
 		}
 		
-		
-		
-		
 		return leTirTouche;
 	}
+	
+	
+
 	
 	
 	public void InstancierFlotte()  
@@ -98,15 +90,15 @@ public class Flotte {
 		Coord cord10 = new Coord(7,9);
 		
 		Navire porteavions = new Navire(Constantes.PORTE_AVION,cord1,cord2,Color.RED);
-		list.add(porteavions);
+		Navirelist.add(porteavions);
 		Navire croiseur = new Navire(Constantes.CROISEUR,cord3,cord4,Color.BLUE);
-		list.add(croiseur);
+		Navirelist.add(croiseur);
 		Navire contretorpilleurs = new Navire(Constantes.DESTROYER,cord5,cord6,Color.YELLOW);
-		list.add(contretorpilleurs);
+		Navirelist.add(contretorpilleurs);
 		Navire sousmarin = new Navire(Constantes.SOUS_MARIN,cord7,cord8,Color.BLACK);
-		list.add(sousmarin);
+		Navirelist.add(sousmarin);
 		Navire torpilleur = new Navire(Constantes.CUIRASSE,cord9,cord10,Color.ORANGE);
-		list.add(torpilleur);
+		Navirelist.add(torpilleur);
 
 		
 		
