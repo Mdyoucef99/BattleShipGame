@@ -1,3 +1,4 @@
+package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,8 @@ public class Flotte {
 	}
 	
 	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = (Navire[]) list.toArray();
+		 Navire[] arrayBateau = new Navire[list.size()]; 
+		 arrayBateau = list.toArray(arrayBateau); 
 		 return arrayBateau;
 	 }
 	
@@ -29,9 +31,6 @@ public class Flotte {
 				dejaRecuCoup = true;
 			}
 		}
-		
-		
-		
 		
 		return dejaRecuCoup;
 	}
@@ -83,7 +82,6 @@ public class Flotte {
 	 * 
 	 */
 	private int ajouterNavire(Navire Navire) {
-		
 		
 		
 		return 0;
