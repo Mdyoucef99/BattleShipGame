@@ -73,8 +73,6 @@ public class Navire {
 	}
 	
 	
-	
-	
 	public boolean tirAtouche(Coord tir) {
 		boolean tirAtouche = false;
 		if(!estCoule()) {
