@@ -55,7 +55,7 @@ public class UtilitaireGrilleGui {
 		// À vous de jouer
         	
         	
-        	for(Navire nav : flotte.Navirelist) 
+        	for(Navire nav : flotte.list) 
         	{
         		if(nav.debut.ligne==nav.fin.ligne) 
             	{

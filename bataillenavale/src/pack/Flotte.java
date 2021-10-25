@@ -1,3 +1,4 @@
+package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,13 @@ public class Flotte {
 		
 	}
 	
-	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = (Navire[]) list.toArray();
+	 public Navire[] getTabNavires() 
+	 {
+		 Navire[] arrayBateau = new Navire[list.size()];
+		 arrayBateau = list.toArray(arrayBateau);
 		 return arrayBateau;
 	 }
+	 
 	
 	public boolean dejaRecuCoup(Coord tir) 
 	{
