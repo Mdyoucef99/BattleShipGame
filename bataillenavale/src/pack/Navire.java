@@ -10,7 +10,7 @@ public class Navire {
 	public Coord fin;
 	public int taille=0; 
 	public Color couleur;
-	List<Coord> list = new ArrayList<Coord>();
+	List<Coord> Couplist = new ArrayList<Coord>();
 	
 	public Navire(String nom,Coord debut,Coord fin,Color couleur) {
 		
@@ -54,7 +54,7 @@ public class Navire {
 	
 	public boolean estCoule() {
 		boolean estcoule = false;
-		if(list.size() == taille) {
+		if(Couplist.size() == taille) {
 			estcoule = true;
 		}
 		return estcoule;
@@ -64,8 +64,7 @@ public class Navire {
 	public boolean dejaRecuTir(Coord tir) 
 	{
 		boolean dejaRecuTir=false;
-		
-		if(list.contains(tir)) 
+		if(Couplist.contains(tir)) 
 		{
 			dejaRecuTir=true;
 		}
@@ -74,14 +73,12 @@ public class Navire {
 	}
 	
 	
-	
-	
 	public boolean tirAtouche(Coord tir) {
 		boolean tirAtouche = false;
 		if(!estCoule()) {
 			if(!dejaRecuTir(tir)) {
 				if(positionTouche(tir)) {
-					list.add(tir);
+					Couplist.add(tir);
 					tirAtouche = true;
 				}		
 			}		
@@ -116,20 +113,20 @@ public class Navire {
 	}
 	
 	public void afficherList() {
-		for(Coord elem: list){
+		for(Coord elem: Couplist){
 	       	 System.out.println (elem);
 	    }
 	}
 	
 	public static void main(String[] args){
 		
-         Coord debut = new Coord(1,1);
-         Coord fin = new Coord(4,1);
+         Coord debut = new Coord(2,1);
+         Coord fin = new Coord(6,1);
          
          Coord debut1 = new Coord(5,1);
          Coord fin2 = new Coord(7,1);
          
-         Coord tir = new Coord(3,1);
+         Coord tir = new Coord(6,1);
            
          Navire test1 = new Navire("La perle noire",debut,fin,Color.BLACK);
          Navire test2 = new Navire("La perle noire",debut1,fin2,Color.BLACK);
@@ -140,14 +137,13 @@ public class Navire {
          //System.out.println(test1.chevauche(test2));   
          //System.out.println(test1.estCoule());
          
-         //test1.tirAtouche(tir);
+         //test1.list.add(tir);
+         System.out.println(test1.tirAtouche(tir));
          
          
          
-         
-         test1.list.add(tir);
-         test1.afficherList();
-         System.out.println(test1.dejaRecuTir(tir));
+        // test1.afficherList();
+        // System.out.println(test1.dejaRecuTir(tir));
          
     }
 	
