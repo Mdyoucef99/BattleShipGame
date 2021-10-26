@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+/*
+ * Auteur : Rada Leng
+ */
 public class Flotte {
 	public static Random rand = new Random();
 	List<Navire> Navirelist = new ArrayList<Navire>();
@@ -105,15 +107,16 @@ public class Flotte {
 			ajouterNavire = 1;
 			}
 		
-		
-
-	
 		for(Navire nav : Navirelist) {
 			if(nav.chevauche(navire) == true) {
+				System.out.println("NAVIRE_DEJA_SUR_PLACE");
+				System.out.println("POSITION_INVALIDE");
 				ajouterNavire = 1;	
 			}
 		}
-		
+		if(ajouterNavire == 0) {
+			System.out.println("AUCUNE_ERREUR");
+		}
 		return ajouterNavire;
 	}
 	/*
@@ -190,33 +193,6 @@ public class Flotte {
 		obtenirNavireAleatoire(Constantes.CUIRASSE,3,Color.GREEN);
 		obtenirNavireAleatoire(Constantes.SOUS_MARIN,3,Color.BLACK);
 		obtenirNavireAleatoire(Constantes.DESTROYER,2,Color.ORANGE);
-		String[] Bateau = new String[5];
-		Bateau[0] = Constantes.PORTE_AVION;
-		Bateau[1] = Constantes.CROISEUR;
-		Bateau[2] = Constantes.CUIRASSE;
-		Bateau[3] = Constantes.SOUS_MARIN;
-		Bateau[4] = Constantes.DESTROYER;
-		
-		for(int i = 0; i < 4 ; i++) {
-			if(Navirelist.contains(Bateau[i])) {
-				System.out.println(Bateau[i]+"est dans la flotte");
-			}
-			else {
-				int j = 0;
-				if(i == 4) {
-					 j = 2;
-				}
-				else if(i == 3 || i == 2) {
-					 j = 3;
-				}
-				else if(i == 1) {
-					 j = 4;
-				}else if( i == 0) {
-					 j = 5;
-				}
-				obtenirNavireAleatoire(Bateau[i],j,Color.GRAY);
-			}
-		}
 
 }
 	
