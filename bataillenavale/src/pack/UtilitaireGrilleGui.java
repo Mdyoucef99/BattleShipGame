@@ -42,7 +42,7 @@ public class UtilitaireGrilleGui {
 	
 	
 	/*
-	 * Fonction qui permet d'afficher chaque navire dans la flotte et ensuite qui colorie chaque case du navire de dut a la fin
+	 * Fonction qui permet d'afficher chaque navire dans la flotte et ensuite qui colorie chaque case du navire de debut a la fin
 	 * Auteur : Youcef mekki daouadji
 	 * 
 	 * 
@@ -96,7 +96,12 @@ public class UtilitaireGrilleGui {
 	  }
         
    
-        
+        /*
+    	 * Fonction qui permet d'afficher un navire et ensuite qui colorie chaque case du navire de debut a la fin
+    	 * Auteur : Youcef mekki daouadji
+    	 * 
+    	 * 
+    	 * */
         //Tester montrer navire 
         public static void montrerNavire(Navire navire, GrilleGui gui)
         {
