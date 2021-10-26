@@ -1,25 +1,28 @@
+package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Flotte {
+public class Flotte 
+{
 	public static Random rand = new Random();
 	List<Navire> Navirelist = new ArrayList<Navire>();
 	
 	public Flotte() 
 	{
 		genererPosNavireAleaInsererDsGrille();
-		
 	}
 	/*
 	 *fonciton qui nous donne le Navirelist en array 
 	 *en utilisant toArray 
 	 *
-	 *Auteur : Rada Leng
+	 *Auteur : Rada Leng && Youcef mekki daouadji
 	 */
-	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = (Navire[]) Navirelist.toArray();
+	 public Navire[] getTabNavires() 
+	 {
+		 Navire[] arrayBateau = new Navire[Navirelist.size()]; 
+		 arrayBateau = Navirelist.toArray(arrayBateau);
 		 return arrayBateau;
 	 }
 	/*
@@ -128,10 +131,12 @@ public class Flotte {
 	}
 
 
-	public static  Flotte obtenirFlotteAleatoire() {
-		
+	/* Fonction qui s'occupe de generer la flotte avec tous les navires
+ * Auteur : youcef mekki daouadji
+ * 
+ * */
+	public static Flotte obtenirFlotteAleatoire() {
         Flotte flottemain = new Flotte();
-        
         return flottemain;
 
 	}
@@ -152,7 +157,6 @@ public class Flotte {
 
 		int x = 0;
 		int y = 0;
-
 		int x1 = 0;
 		int y1 = 0;
 		int direction = 0;
@@ -216,7 +220,6 @@ public class Flotte {
 		obtenirNavireAleatoire(Constantes.SOUS_MARIN,3,Color.BLACK);
 		obtenirNavireAleatoire(Constantes.DESTROYER,2,Color.ORANGE);
 		
-
 }
 	
 }

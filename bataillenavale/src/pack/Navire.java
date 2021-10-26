@@ -1,3 +1,4 @@
+package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Navire {
 	public int taille=0; 
 	public Color couleur;
 	public List<Coord> list = new ArrayList<Coord>();
+	
 	
 	/**
 	 * Constructeurs par copie d'attributs,
@@ -79,14 +81,20 @@ public class Navire {
 	/**
 	 * Une méthode qui retourne vrai si la coordonnée reçue à déjà touché au navire,
 	 * 
-	 * Auteur: Antoine Bolduc
+	 * Auteur: Antoine Bolduc && Youcef mekki daouadji
 	 */
 	public boolean dejaRecuTir(Coord tir)  
     { 
-        boolean dejaRecuTir=false;       
-        if(list.contains(tir))  { 
-            dejaRecuTir=true; 
-        }    
+        boolean dejaRecuTir=false;    
+        for(Coord cord : list) 
+        {
+        	if(cord.toString() == tir.toString()) 
+        	{
+        		dejaRecuTir=true; 
+        	}
+        	
+        }
+
         return dejaRecuTir; 
     } 
 	
