@@ -4,13 +4,26 @@ import java.util.List;
 
 public class Navire {
 	
-	public String nom;
+	/**
+	 * Les attributs conservés.
+	 */
+	public  String nom;
 	public Coord debut;
 	public Coord fin;
 	public int taille=0; 
 	public Color couleur;
-	List<Coord> list = new ArrayList<Coord>();
+	public List<Coord> list = new ArrayList<Coord>();
 	
+	/**
+	 * Constructeurs par copie d'attributs,
+	 * 
+	 * @param nom
+	 * @param debut Le début d'une coordonnée
+	 * @param fin	La fin d'une coordonnée
+	 * @param couleur
+	 * 
+	 * Auteur: Antoine Bolduc && Youcef Mekki Daouadji
+	 */
 	public Navire(String nom,Coord debut,Coord fin,Color couleur) {
 		
 		int nbLigne = fin.ligne-debut.ligne+1;
@@ -50,6 +63,11 @@ public class Navire {
 		
 	}
 	
+	/**
+	 * Une méthode qui retourne vrai si le bateau est coulé,
+	 * 
+	 * Auteur: Antoine Bolduc
+	 */
 	public boolean estCoule() {
 		boolean estcoule = false;
 		if(list.size() == taille) {
@@ -58,6 +76,11 @@ public class Navire {
 		return estcoule;
 	}
 
+	/**
+	 * Une méthode qui retourne vrai si la coordonnée reçue à déjà touché au navire,
+	 * 
+	 * Auteur: Antoine Bolduc
+	 */
 	public boolean dejaRecuTir(Coord tir)  
     { 
         boolean dejaRecuTir=false;       
@@ -67,6 +90,12 @@ public class Navire {
         return dejaRecuTir; 
     } 
 	
+	/**
+	 * Une méthode qui retourne vrai si la coordonnée reçue touche au navire actuel
+	 * et retient aussi la coordonnée si elle l’a touché,
+	 * 
+	 * Auteur: Antoine Bolduc
+	 */
 	public boolean tirAtouche(Coord tir) {
 		boolean tirAtouche = false;
 		if(!estCoule()) {
@@ -80,6 +109,11 @@ public class Navire {
 		return tirAtouche;
 	}
 	
+	/**
+	 * Une méthode qui retourne vrai si une des positions du navire reçu touche à une des positions du navire actuel,
+	 * 
+	 * Auteur: Antoine Bolduc
+	 */
 	public boolean chevauche(Navire navire) {
 		boolean chevauche = false;
 		Coord coord = new Coord();
@@ -95,19 +129,21 @@ public class Navire {
 		return chevauche;
 	}
 	
+	/**
+	 * Une méthode qui retourne vrai si la coordonnée du tir touche au navire,
+	 * 
+	 * Auteur: Antoine Bolduc
+	 */
 	private boolean positionTouche(Coord tir) {	
 		boolean positionTouche = false;
 		int nbLigne = fin.ligne-debut.ligne+1;
 		int nbColonne = fin.colonne-debut.colonne+1;
-		
-		 System.out.println("nbLigne :"+nbLigne);
-		 System.out.println("nbColonne :"+nbColonne);
 		 
 		 if(nbLigne>1) {
 			if (tir.ligne>= debut.ligne && tir.ligne <= fin.ligne) {	 
 				positionTouche = true;
 			}
-			// debut.colonne est égale à fin.ligne car le nb de colonne est a 1
+			// debut.colonne est égale à fin.colonne car le nb de colonne est a 1
 			if(tir.colonne != debut.colonne) {
 				positionTouche = false;
 			}		
@@ -116,7 +152,7 @@ public class Navire {
 			 if (tir.colonne>= debut.colonne && tir.colonne <= fin.colonne) {		
 					positionTouche = true;		
 			 }
-			// debut.colonne est égale à fin.ligne car le nb de colonne est a 1
+			// debut.ligne est égale à fin.ligne car le nb de ligne est a 1
 			 if(tir.ligne != debut.ligne) {
 					positionTouche = false;
 				}
@@ -124,45 +160,14 @@ public class Navire {
 		return positionTouche;
 	}
 	
-	
-	
+	/**
+	 * Une fonction qui affiche la liste courante,
+	 * 
+	 * Auteur: Antoine Bolduc
+	 */
 	public void afficherList() {
 		for(Coord elem: list){
 	       	 System.out.println (elem);
 	    }
 	}
-	
-	public static void main(String[] args){
-		
-         Coord debut = new Coord(1,1);
-         Coord fin = new Coord(1,4);
-         
-         Coord debut1 = new Coord(1,1);
-         Coord fin2 = new Coord(3,1);
-         
-         Coord tir = new Coord(1,1);
-         
-           
-         Navire test1 = new Navire("La perle noire",debut,fin,Color.BLACK);
-         Navire test2 = new Navire("La perle noire",debut1,fin2,Color.BLACK);
-         
-         //test1.list.add(tir);
-         
-         //System.out.println(test1.positionTouche(debut1));
-         //System.out.println(test1.dejaRecuTir(tir));
-         System.out.println(tir);
-         //System.out.println(test1.chevauche(test2)); 
-         
-         // probleme
-         
-      
-         System.out.println(test1.positionTouche(tir));
-         
-         
-         //test1.tirAtouche(tir);
-         
-         //test1.afficherList();
-       
-    }
-	
 }
