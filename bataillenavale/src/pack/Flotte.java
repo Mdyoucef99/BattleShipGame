@@ -1,4 +1,3 @@
-package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,31 +6,30 @@ import java.util.Random;
 
 public class Flotte {
 	public static Random rand = new Random();
-	List<Navire> Navirelist = new ArrayList<Navire>();
+	List<Navire> list = new ArrayList<Navire>();
 	
 	public Flotte() 
 	{
-		InstancierFlotte();
+		genererPosNavireAleaInsererDsGrille();
 		
 	}
 	
 	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = new Navire[Navirelist.size()]; 
-		 arrayBateau = Navirelist.toArray(arrayBateau); 
+		 Navire[] arrayBateau = (Navire[]) list.toArray();
 		 return arrayBateau;
 	 }
 	
-	 
 	public boolean dejaRecuCoup(Coord tir) 
 	{
 		boolean dejaRecuCoup = false;
-		for(Navire Navire : Navirelist) {
-			if(Navire.dejaRecuTir(tir) == true){
+		for(Navire Navire : list) {
+			if(Navire.tirAtouche(tir) == true){
 
+				
 				dejaRecuCoup = true;
 			}
 		}
-		
+
 		return dejaRecuCoup;
 	}
 	
@@ -42,19 +40,17 @@ public class Flotte {
 
 		int taille = 0;
 
-		for(Navire Navire : Navirelist) {
+		for(Navire Navire : list) {
 			if(Navire.estCoule() == true) {
 				
 				taille++;
-				if(taille == Navirelist.size()) {
+				if(taille == list.size()) {
 					
 					jeuTermine = true;
 				}
 			}
 
 		}
-		
-
 		return jeuTermine;
 	}
 	
@@ -62,7 +58,7 @@ public class Flotte {
 	public boolean leTirTouche(Coord tir) 
 	{
 		boolean leTirTouche = false;
-		for(Navire Navire : Navirelist) {
+		for(Navire Navire : list) {
 			if(Navire.tirAtouche(tir) == true){
 
 				
@@ -70,9 +66,7 @@ public class Flotte {
 			}
 		}
 		
-		
-		
-		
+	
 		return leTirTouche;
 	}
 	
@@ -82,9 +76,18 @@ public class Flotte {
 	 * 
 	 */
 	private int ajouterNavire(Navire Navire) {
-		
-		
-		return 0;
+
+		int ajouterNavire = 0;
+
+	/*
+		for(Navire nav : list) {
+			if(nav.chevauche(Navire) == true) {
+				ajouterNavire = 1;	
+			}
+
+		}
+		*/
+		return ajouterNavire;
 	}
 	/*
 	 * 
@@ -93,176 +96,57 @@ public class Flotte {
 	 * boucle se termine quand ajouternavire retourne aucune erreur
 	 */
 
-	private void genererPosNavireAleaInsererDsGrille() {
 	
+	public static Flotte obtenirFlotteAleatoire(GrilleGui gui, Flotte flotte) {
+		
+		
+		return flotte;
+	}
+	
+	private Navire obtenirNavireAleatoire(String nom, int longueur, Color couleur) {
 
-	}
-	/*
-	public static obtenirFlotteAleatoire() {
-		
-		
-		return 0;
-	}
-	
-	private obtenirNavireAleatoire(String nom, int longueur, Color couleur) {
-		
-		
-		
-		return 0;
-	}
-	*/
-	public void InstancierFlotte()  
-	{
 		int x = 0;
 		int y = 0;
+
 		int x1 = 0;
 		int y1 = 0;
 		int direction = 0;
-		/*
-		 * on randomize 2 coordonne et dependemment 
-		 * la valeur de la direction on additionne + x
-		 */
-		
 		x = rand.nextInt(10);
 		y = rand.nextInt(10);
-		while (x > 5 || y > 5) {
+		while(x >Constantes.TAILLE - longueur || y > Constantes.TAILLE - longueur ) {
 			x = rand.nextInt(10);
 			y = rand.nextInt(10);
-			
-			
-			
 		}
-		/*
-		 * randomize une direction si direction = 0
-		 * on modifie la ligne si direction = 1 
-		 * on modifie la colonne
-		 */
+	
 		direction = rand.nextInt(2);
-		System.out.println(direction);
-		if(direction ==1) {
+		if(direction == 1) {
 			x1 = x;
-			y1 = (y+4);
+			y1 = y+longueur-1;
 		}
 		else {
-			x1 = x+4;
+			x1 = x+longueur-1;
 			y1 = y;
 		}	
-		/*
-		 * on met en coordonne les 4 valeurs 
-		 */
 		Coord cord1 = new Coord(x,y);
 		Coord cord2 = new Coord(x1,y1);	
-/*
- * on rajoute a la liste la bateau
- */
-		Navire porteavions = new Navire(Constantes.PORTE_AVION,cord1,cord2,Color.RED);
-		Navirelist.add(porteavions);
-		/*
-		 * 
-		 * Bateau 2
-		 */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 6 || y > 6) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
-		}
-
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+3);
-		}
-		else {
-			x1 = x+3;
-			y1 = y;
-		}
-		Coord cord3 = new Coord(x,y);
-		Coord cord4 = new Coord(x1,y1);	
-		Navire croiseur = new Navire(Constantes.CROISEUR,cord3,cord4,Color.BLUE);
-		Navirelist.add(croiseur);
-/*
- * Bateau 3
- */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 7 || y > 7) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
-		}
-
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+2);
-		}
-		else {
-			x1 = x+2;
-			y1 = y;
-		}
-		Coord cord5 = new Coord(x,y);
-		Coord cord6 = new Coord(x1,y1);	
-		Navire contretorpilleurs = new Navire(Constantes.CROISEUR,cord5,cord6,Color.GREEN);
-		Navirelist.add(contretorpilleurs);
+		Navire nav = new Navire(nom,cord1,cord2,couleur);
+		System.out.println(nom);
+		System.out.println(cord1);
+		System.out.println(cord2);
+		System.out.println(direction);
 		
-		/*
-		 * Bateau 4
-		 */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 8 || y > 8) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
+		if(ajouterNavire(nav) == 0) {
+			list.add(nav);
 		}
-
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+1);
-		}
-		else {
-			x1 = x+1;
-			y1 = y;
-		}
-		Coord cord7 = new Coord(x,y);
-		Coord cord8 = new Coord(x1,y1);	
-		Navire sousmarin = new Navire(Constantes.SOUS_MARIN,cord7,cord8,Color.BLACK);
-		Navirelist.add(sousmarin);
-
-		/*
-		 * Bateau 5
-		 */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 7 || y > 7) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
-		}
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+2);
-		}
-		else {
-			x1 = x+2;
-			y1 = y;
-		}
-		Coord cord9 = new Coord(x,y);
-		Coord cord10 = new Coord(x1,y1);	
-		Navire torpilleur = new Navire(Constantes.CUIRASSE,cord9,cord10,Color.ORANGE);
-		Navirelist.add(torpilleur);	
-		
-		/*
-		 * 
-		 * fonction chevauche imcomplet
-		 */
-		for(Navire nav : Navirelist) {
-			if(nav.chevauche(nav) == true) {
-				
-			}
-		}
-
+		return nav;	
 	}
+	private void genererPosNavireAleaInsererDsGrille()  
+	{	
+		obtenirNavireAleatoire(Constantes.PORTE_AVION,5,Color.RED);
+		obtenirNavireAleatoire(Constantes.CROISEUR,4,Color.BLUE);
+		obtenirNavireAleatoire(Constantes.CUIRASSE,3,Color.GREEN);
+		obtenirNavireAleatoire(Constantes.SOUS_MARIN,3,Color.BLACK);
+		obtenirNavireAleatoire(Constantes.DESTROYER,2,Color.ORANGE);
 	
-	
+	}
 }
