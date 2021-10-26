@@ -41,6 +41,12 @@ public class UtilitaireGrilleGui {
 	
 	
 	
+	/*
+	 * Fonction qui permet d'afficher chaque navire dans la flotte et ensuite qui colorie chaque case du navire de dut a la fin
+	 * Auteur : Youcef mekki daouadji
+	 * 
+	 * 
+	 * */
 	
         public static void montrerFlotte(Flotte flotte, GrilleGui gui)
         {
@@ -53,8 +59,7 @@ public class UtilitaireGrilleGui {
 
 
 		// À vous de jouer
-        	
-        	
+        
         	for(Navire nav : flotte.Navirelist) 
         	{
         		if(nav.debut.ligne==nav.fin.ligne) 
