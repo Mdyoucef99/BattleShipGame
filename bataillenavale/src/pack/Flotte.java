@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/*
- * Auteur : Rada Leng
- */
 public class Flotte {
 	public static Random rand = new Random();
 	List<Navire> Navirelist = new ArrayList<Navire>();
@@ -17,7 +14,9 @@ public class Flotte {
 	}
 	/*
 	 *fonciton qui nous donne le Navirelist en array 
-	 *en utilisant toArray
+	 *en utilisant toArray 
+	 *
+	 *Auteur : Rada Leng
 	 */
 	 public Navire[] getTabNavires() {
 		 Navire[] arrayBateau = (Navire[]) Navirelist.toArray();
@@ -26,6 +25,8 @@ public class Flotte {
 	/*
 	 * fonction qui nous returne true si un navire 
 	 * a ete touche par le tir
+	 * 
+	 * Auteur : Rada Leng
 	 */
 	public boolean dejaRecuCoup(Coord tir) 
 	{
@@ -44,6 +45,8 @@ public class Flotte {
 	 * fonction qui nous returne true si tous les 
 	 * bateaux ont ete coule
 	 * sil retourne true le jeu est termine
+	 * 
+	 * Auteur : Rada Leng
 	 */
 	public boolean jeuTermine() 
 	{
@@ -70,6 +73,8 @@ public class Flotte {
 	/*
 	 * fonction qui retourne true si le
 	 * tir a touche un navire de la flotte
+	 * 
+	 * Auteur : Rada Leng
 	 */
 	public boolean leTirTouche(Coord tir) 
 	{
@@ -93,6 +98,8 @@ public class Flotte {
 	 *si jamais une des contraintes nest pas respecte 
 	 *ajouterNavire retourne 1 et sil retourne un il ne sera pas ajoute 
 	 *dans la liste
+	 *
+	 *Auteur : Rada Leng
 	 */
 	private int ajouterNavire(Navire navire) {
 
@@ -119,18 +126,14 @@ public class Flotte {
 		}
 		return ajouterNavire;
 	}
-	/*
-	 * 
-	 * ajoute un navire dans la flotte un a un 
-	 * autant de boucle quil y a de navire 
-	 * boucle se termine quand ajouternavire retourne aucune erreur
-	 */
 
-	
-	public static Flotte obtenirFlotteAleatoire(GrilleGui gui, Flotte flotte) {
+
+	public static  Flotte obtenirFlotteAleatoire() {
 		
-		
-		return flotte;
+        Flotte flottemain = new Flotte();
+        
+        return flottemain;
+
 	}
 	
 	/*
@@ -140,7 +143,10 @@ public class Flotte {
 	 * la taille de la grille - la longueur du bateau qui est demande
 	 * et on fait ensuite un random pour choisir la direction sil va par colonne
 	 * ou par ligne et sil respecte les contraintes de ajouerNavire on lajoute 
-	 * a la liste
+	 * a la liste. tant que ajouternavire == 1 on redemande les coordonnes pour 
+	 * au final avoir nos 5 bateaux
+	 * 
+	 * Auteur : Rada Leng
 	 */
 	private Navire obtenirNavireAleatoire(String nom, int longueur, Color couleur) {
 
@@ -169,10 +175,28 @@ public class Flotte {
 		Coord cord1 = new Coord(x,y);
 		Coord cord2 = new Coord(x1,y1);	
 		Navire nav = new Navire(nom,cord1,cord2,couleur);
-		System.out.println(nom);
-		System.out.println(cord1);
-		System.out.println(cord2);
-		System.out.println(direction);
+
+		while(ajouterNavire(nav) == 1) {
+			int a,b,c,d,e = 0;
+			a = rand.nextInt(10);
+			b = rand.nextInt(10);
+			while(a >Constantes.TAILLE - longueur || b > Constantes.TAILLE - longueur ) {
+				a = rand.nextInt(10);
+				b = rand.nextInt(10);
+			}
+			e = rand.nextInt(2);
+			if(e == 1) {
+				c = a;
+				d = b+longueur-1;
+			}
+			else {
+				c = a+longueur-1;
+				d = b;
+			}	
+			cord1 = new Coord(a,b);
+			cord2 = new Coord(c,d);	
+			nav = new Navire(nom,cord1,cord2,couleur);			
+		}
 		
 		if(ajouterNavire(nav) == 0) {
 			Navirelist.add(nav);
@@ -181,10 +205,8 @@ public class Flotte {
 	}
 	
 	/*
-	 * on genere les bateaux et pour les bateaux qui nont pas respecter 
-	 * les contraintes de ajouterNavire on met une boucle for pour 
-	 * regenrer les bateaux perdus
-	 * 
+	 * on genere les bateaux par obtenirNavireAleatoire
+	 * Auteur: Rada Leng
 	 */
 	private void genererPosNavireAleaInsererDsGrille()  
 	{	
@@ -193,6 +215,7 @@ public class Flotte {
 		obtenirNavireAleatoire(Constantes.CUIRASSE,3,Color.GREEN);
 		obtenirNavireAleatoire(Constantes.SOUS_MARIN,3,Color.BLACK);
 		obtenirNavireAleatoire(Constantes.DESTROYER,2,Color.ORANGE);
+		
 
 }
 	
