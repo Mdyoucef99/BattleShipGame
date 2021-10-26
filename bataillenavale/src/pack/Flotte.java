@@ -35,9 +35,8 @@ public class Flotte
 	{
 		boolean dejaRecuCoup = false;
 		for(Navire Navire : Navirelist) {
-			if(Navire.tirAtouche(tir) == true){
-
-				
+			if(Navire.dejaRecuTir(tir) == true)
+			{
 				dejaRecuCoup = true;
 			}
 		}
@@ -53,17 +52,14 @@ public class Flotte
 	 */
 	public boolean jeuTermine() 
 	{
-
 		boolean jeuTermine = false;
 
 		int taille = 0;
 
 		for(Navire Navire : Navirelist) {
 			if(Navire.estCoule() == true) {
-				
 				taille++;
 				if(taille == Navirelist.size()) {
-					
 					jeuTermine = true;
 					System.out.println("le jeu est termine");
 				}
@@ -84,13 +80,10 @@ public class Flotte
 		boolean leTirTouche = false;
 		for(Navire Navire : Navirelist) {
 			if(Navire.tirAtouche(tir) == true){
-
-				
 				leTirTouche = true;
 			}
 		}
 		
-	
 		return leTirTouche;
 	}
 	
