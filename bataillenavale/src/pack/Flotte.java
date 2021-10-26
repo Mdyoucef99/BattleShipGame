@@ -1,3 +1,4 @@
+package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,10 @@ public class Flotte {
 	 *fonciton qui nous donne le Navirelist en array 
 	 *en utilisant toArray
 	 */
-	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = (Navire[]) Navirelist.toArray();
+	 public Navire[] getTabNavires() 
+	 {
+		 Navire[] arrayBateau = new Navire[Navirelist.size()]; 
+		 arrayBateau = Navirelist.toArray(arrayBateau);
 		 return arrayBateau;
 	 }
 	/*
