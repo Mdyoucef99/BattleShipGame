@@ -1,40 +1,50 @@
-package pack;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+/*
+ * Auteur : Rada Leng
+ */
 public class Flotte {
 	public static Random rand = new Random();
 	List<Navire> Navirelist = new ArrayList<Navire>();
 	
 	public Flotte() 
 	{
-		InstancierFlotte();
+		genererPosNavireAleaInsererDsGrille();
 		
 	}
-	
+	/*
+	 *fonciton qui nous donne le Navirelist en array 
+	 *en utilisant toArray
+	 */
 	 public Navire[] getTabNavires() {
-		 Navire[] arrayBateau = new Navire[Navirelist.size()]; 
-		 arrayBateau = Navirelist.toArray(arrayBateau); 
+		 Navire[] arrayBateau = (Navire[]) Navirelist.toArray();
 		 return arrayBateau;
 	 }
-	
-	 
+	/*
+	 * fonction qui nous returne true si un navire 
+	 * a ete touche par le tir
+	 */
 	public boolean dejaRecuCoup(Coord tir) 
 	{
 		boolean dejaRecuCoup = false;
 		for(Navire Navire : Navirelist) {
-			if(Navire.dejaRecuTir(tir) == true){
+			if(Navire.tirAtouche(tir) == true){
 
+				
 				dejaRecuCoup = true;
 			}
 		}
-		
+
 		return dejaRecuCoup;
 	}
-	
+	/*
+	 * fonction qui nous returne true si tous les 
+	 * bateaux ont ete coule
+	 * sil retourne true le jeu est termine
+	 */
 	public boolean jeuTermine() 
 	{
 
@@ -49,16 +59,18 @@ public class Flotte {
 				if(taille == Navirelist.size()) {
 					
 					jeuTermine = true;
+					System.out.println("le jeu est termine");
 				}
 			}
 
 		}
-		
-
 		return jeuTermine;
 	}
 	
-	
+	/*
+	 * fonction qui retourne true si le
+	 * tir a touche un navire de la flotte
+	 */
 	public boolean leTirTouche(Coord tir) 
 	{
 		boolean leTirTouche = false;
@@ -70,21 +82,42 @@ public class Flotte {
 			}
 		}
 		
-		
-		
-		
+	
 		return leTirTouche;
 	}
 	
 	/*
-	 * ajoute un navire seulement si les coordonnes sont du navires sont valides
-	 * doit etre a linterieur de la grille et pas chevaucher un navire dans la flotte
-	 * 
+	 *fonction qui regarde si un navire chevauche par 
+	 *dessus un autre ou si les coordonnes
+	 *dun navire est a linterieur de la grille
+	 *si jamais une des contraintes nest pas respecte 
+	 *ajouterNavire retourne 1 et sil retourne un il ne sera pas ajoute 
+	 *dans la liste
 	 */
-	private int ajouterNavire(Navire Navire) {
+	private int ajouterNavire(Navire navire) {
+
+		int ajouterNavire = 0;
 		
+		if(navire.debut.ligne < 0 || navire.fin.ligne > Constantes.TAILLE -1) {
+			 System.out.println("ligne invalide");
+			 ajouterNavire = 1;
+		}
+			if(navire.debut.colonne < 0 || navire.fin.colonne > Constantes.TAILLE - 1) {
+				System.out.println("colonne invalide");
+			ajouterNavire = 1;
+			}
 		
-		return 0;
+		for(Navire nav : Navirelist) {
+			if(nav.chevauche(navire) == true) {
+				System.out.println("NAVIRE_DEJA_SUR_PLACE");
+				System.out.println("POSITION_INVALIDE");
+				ajouterNavire = 1;	
+			}
+		}
+		if(ajouterNavire == 0) {
+			System.out.println("AUCUNE_ERREUR");
+		}
+		return ajouterNavire;
 	}
 	/*
 	 * 
@@ -93,176 +126,74 @@ public class Flotte {
 	 * boucle se termine quand ajouternavire retourne aucune erreur
 	 */
 
-	private void genererPosNavireAleaInsererDsGrille() {
 	
-
+	public static Flotte obtenirFlotteAleatoire(GrilleGui gui, Flotte flotte) {
+		
+		
+		return flotte;
 	}
+	
 	/*
-	public static obtenirFlotteAleatoire() {
-		
-		
-		return 0;
-	}
-	
-	private obtenirNavireAleatoire(String nom, int longueur, Color couleur) {
-		
-		
-		
-		return 0;
-	}
-	*/
-	public void InstancierFlotte()  
-	{
+	 * fonction qui nous donne un navire avec des coordonnes 
+	 * aleatoire en commence avec la valeur du premier coordonnees
+	 * pour en suite faire un random et tant quil nest pas plus grand que
+	 * la taille de la grille - la longueur du bateau qui est demande
+	 * et on fait ensuite un random pour choisir la direction sil va par colonne
+	 * ou par ligne et sil respecte les contraintes de ajouerNavire on lajoute 
+	 * a la liste
+	 */
+	private Navire obtenirNavireAleatoire(String nom, int longueur, Color couleur) {
+
 		int x = 0;
 		int y = 0;
+
 		int x1 = 0;
 		int y1 = 0;
 		int direction = 0;
-		/*
-		 * on randomize 2 coordonne et dependemment 
-		 * la valeur de la direction on additionne + x
-		 */
-		
 		x = rand.nextInt(10);
 		y = rand.nextInt(10);
-		while (x > 5 || y > 5) {
+		while(x >Constantes.TAILLE - longueur || y > Constantes.TAILLE - longueur ) {
 			x = rand.nextInt(10);
 			y = rand.nextInt(10);
-			
-			
-			
 		}
-		/*
-		 * randomize une direction si direction = 0
-		 * on modifie la ligne si direction = 1 
-		 * on modifie la colonne
-		 */
+	
 		direction = rand.nextInt(2);
-		System.out.println(direction);
-		if(direction ==1) {
+		if(direction == 1) {
 			x1 = x;
-			y1 = (y+4);
+			y1 = y+longueur-1;
 		}
 		else {
-			x1 = x+4;
+			x1 = x+longueur-1;
 			y1 = y;
 		}	
-		/*
-		 * on met en coordonne les 4 valeurs 
-		 */
 		Coord cord1 = new Coord(x,y);
 		Coord cord2 = new Coord(x1,y1);	
-/*
- * on rajoute a la liste la bateau
- */
-		Navire porteavions = new Navire(Constantes.PORTE_AVION,cord1,cord2,Color.RED);
-		Navirelist.add(porteavions);
-		/*
-		 * 
-		 * Bateau 2
-		 */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 6 || y > 6) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
-		}
-
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+3);
-		}
-		else {
-			x1 = x+3;
-			y1 = y;
-		}
-		Coord cord3 = new Coord(x,y);
-		Coord cord4 = new Coord(x1,y1);	
-		Navire croiseur = new Navire(Constantes.CROISEUR,cord3,cord4,Color.BLUE);
-		Navirelist.add(croiseur);
-/*
- * Bateau 3
- */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 7 || y > 7) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
-		}
-
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+2);
-		}
-		else {
-			x1 = x+2;
-			y1 = y;
-		}
-		Coord cord5 = new Coord(x,y);
-		Coord cord6 = new Coord(x1,y1);	
-		Navire contretorpilleurs = new Navire(Constantes.CROISEUR,cord5,cord6,Color.GREEN);
-		Navirelist.add(contretorpilleurs);
+		Navire nav = new Navire(nom,cord1,cord2,couleur);
+		System.out.println(nom);
+		System.out.println(cord1);
+		System.out.println(cord2);
+		System.out.println(direction);
 		
-		/*
-		 * Bateau 4
-		 */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 8 || y > 8) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
+		if(ajouterNavire(nav) == 0) {
+			Navirelist.add(nav);
 		}
-
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+1);
-		}
-		else {
-			x1 = x+1;
-			y1 = y;
-		}
-		Coord cord7 = new Coord(x,y);
-		Coord cord8 = new Coord(x1,y1);	
-		Navire sousmarin = new Navire(Constantes.SOUS_MARIN,cord7,cord8,Color.BLACK);
-		Navirelist.add(sousmarin);
-
-		/*
-		 * Bateau 5
-		 */
-		x = rand.nextInt(10);
-		y = rand.nextInt(10);
-		while (x > 7 || y > 7) {
-			x = rand.nextInt(10);
-			y = rand.nextInt(10);	
-		}
-		direction = rand.nextInt(2);
-		if(direction ==1) {
-			x1 = x;
-			y1 = (y+2);
-		}
-		else {
-			x1 = x+2;
-			y1 = y;
-		}
-		Coord cord9 = new Coord(x,y);
-		Coord cord10 = new Coord(x1,y1);	
-		Navire torpilleur = new Navire(Constantes.CUIRASSE,cord9,cord10,Color.ORANGE);
-		Navirelist.add(torpilleur);	
-		
-		/*
-		 * 
-		 * fonction chevauche imcomplet
-		 */
-		for(Navire nav : Navirelist) {
-			if(nav.chevauche(nav) == true) {
-				
-			}
-		}
-
+		return nav;	
 	}
 	
+	/*
+	 * on genere les bateaux et pour les bateaux qui nont pas respecter 
+	 * les contraintes de ajouterNavire on met une boucle for pour 
+	 * regenrer les bateaux perdus
+	 * 
+	 */
+	private void genererPosNavireAleaInsererDsGrille()  
+	{	
+		obtenirNavireAleatoire(Constantes.PORTE_AVION,5,Color.RED);
+		obtenirNavireAleatoire(Constantes.CROISEUR,4,Color.BLUE);
+		obtenirNavireAleatoire(Constantes.CUIRASSE,3,Color.GREEN);
+		obtenirNavireAleatoire(Constantes.SOUS_MARIN,3,Color.BLACK);
+		obtenirNavireAleatoire(Constantes.DESTROYER,2,Color.ORANGE);
+
+}
 	
 }
