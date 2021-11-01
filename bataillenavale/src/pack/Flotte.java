@@ -125,7 +125,7 @@ public class Flotte
 
 
 	/* Fonction qui s'occupe de generer la flotte avec tous les navires
- * Auteur : youcef mekki daouadji
+ *    Auteur : youcef mekki daouadji
  * 
  * */
 	public static Flotte obtenirFlotteAleatoire() {
