@@ -28,7 +28,7 @@ import javax.swing.SwingUtilities;
  * @author Pierre Bélisle (copyright 2016)
  * @version Copyright A2021
  */
-public class GrilleGui  /*implements Runnable*/{
+public class GrilleGui  implements Runnable{
 
 	/*
 	 * STRATÉGIE : On met des boutons dans un panneau mais on les retient aussi 
@@ -138,7 +138,7 @@ public class GrilleGui  /*implements Runnable*/{
 		// On crée le panneau du bas avec les boutons de menu.
 
 		// On affiche le cadre dans le EDT.
-		//SwingUtilities.invokeLater(this);
+		SwingUtilities.invokeLater(this);
 
 	}
 
