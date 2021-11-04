@@ -7,7 +7,7 @@ import java.util.Random;
 public class Flotte 
 {
 	public static Random rand = new Random();
-	List<Navire> Navirelist = new ArrayList<Navire>();
+	public  List<Navire> Navirelist = new ArrayList<Navire>();
 	
 	public Flotte() 
 	{

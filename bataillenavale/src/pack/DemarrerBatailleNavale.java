@@ -46,7 +46,7 @@ public class DemarrerBatailleNavale {
 	public static void main(String[] args) {
 
 		// Création de l'interface graphique qui permet de jouer. 
-		GrilleGui gui = new GrilleGui(Constantes.TAILLE, Constantes.TAILLE,
+		        GrilleGui gui = new GrilleGui(Constantes.TAILLE, Constantes.TAILLE,
 				Constantes.COULEUR_TEXTE, 
 				Constantes.COULEUR_FOND,
 				Constantes.OPTIONS,
@@ -75,7 +75,6 @@ public class DemarrerBatailleNavale {
 
 		}
 	}
-
 	/**
 	 * Procédure qui 
 	 * @param gui
@@ -213,10 +212,7 @@ public class DemarrerBatailleNavale {
 			}break;
 	
 			case Constantes.INTERMEDIAIRE : {  
-				
-				// Écrivez le code nécessaire ici
-				
-				tir =((JoueurIntermediaire)ordi).getTir();
+				tir =((JoueurIntermediaire) ordi).getTir();
 				
 			}break;
 	
@@ -257,6 +253,7 @@ public class DemarrerBatailleNavale {
 				
 			case Constantes.INTERMEDIAIRE :{  
 				
+				((JoueurIntermediaire) ordi).aviseTouche(tir);
 				// Écrivez le code nécessaire ici
 				
 			}break;
