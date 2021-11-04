@@ -118,7 +118,7 @@ public class Flotte
 			}
 		}
 		if(ajouterNavire == 0) {
-			System.out.println("AUCUNE_ERREUR");
+			//System.out.println("AUCUNE_ERREUR");
 		}
 		return ajouterNavire;
 	}

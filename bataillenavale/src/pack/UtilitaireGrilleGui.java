@@ -69,7 +69,7 @@ public class UtilitaireGrilleGui {
             		for(int i=nav.debut.colonne;i<=nav.fin.colonne;i++) 
             		{
             			Coord temp = new Coord(nav.debut.ligne,i);
-            			System.out.println("LES COORDONNES SONT : " + temp.toString());
+            			//System.out.println("LES COORDONNES SONT : " + temp.toString());
             			gui.setCouleurFond(temp,nav.couleur);
             			
             		}
@@ -83,7 +83,7 @@ public class UtilitaireGrilleGui {
             		for(int i=nav.debut.ligne;i<=nav.fin.ligne;i++) 
             		{
             			Coord temp = new Coord(i,nav.debut.colonne);
-            			System.out.println("LES COORDONNES SONT : " + temp.toString());
+            			//System.out.println("LES COORDONNES SONT : " + temp.toString());
             			gui.setCouleurFond(temp,nav.couleur);
             			
             		}

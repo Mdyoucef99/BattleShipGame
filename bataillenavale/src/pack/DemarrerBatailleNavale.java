@@ -216,6 +216,8 @@ public class DemarrerBatailleNavale {
 				
 				// Écrivez le code nécessaire ici
 				
+				tir =((JoueurIntermediaire)ordi).getTir();
+				
 			}break;
 	
 			case Constantes.AVANCE : {
