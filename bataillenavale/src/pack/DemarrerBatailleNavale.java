@@ -72,8 +72,11 @@ public class DemarrerBatailleNavale {
 			// Petit message qui donne le temps de voir ce qui s'est passée.
 			JOptionPane.showMessageDialog(null,"Solution trouvée en " +
 			nbTirs 	+ 	" coups avec " + nbRepetitions + " répétition de tirs");
+			UtilitaireGrilleGui.reinitialiserGui(gui);
+			
 
 		}
+	
 	}
 	/**
 	 * Procédure qui 
@@ -128,11 +131,16 @@ public class DemarrerBatailleNavale {
 			demarrerPartie(ordi, flotteOrdi, Constantes.AVANCE, gui);
 		}	
 		
+		
 		// Le choix expert.
 		else
 			if(JOptionPane.showConfirmDialog(null,"Pas encore implémenté") == 
-			JOptionPane.CANCEL_OPTION)
+			JOptionPane.CANCEL_OPTION) 
+			{
 				System.exit(0);
+			}
+				
+		
 	}
 
 	/**
