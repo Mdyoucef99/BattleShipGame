@@ -21,23 +21,27 @@ public class JoueurAvance {
 	
 	public Coord getTir() 
 	{
-		Coord coord;
+		Coord coord = new Coord(0,0);
+		int index=0;
 		if(TableauCoups.isEmpty()) 
 		{
 			if(premierdiagonale ==true) 
-			{			
-				//do{}while(UtilitaireCollection.tableauContientCoord(TableauCoups,cDiag) || cDiag.ligne == Constantes.TAILLE-1);
+			{					
+				/*while(UtilitaireCollection.tableauContientCoord(TableauCoups,cDiag) || cDiag.ligne == Constantes.TAILLE-1) {
+					cDiag.ligne =cDiag.ligne+1; 
+					cDiag.colonne=cDiag.colonne+1;
+					System.out.println(cDiag.toString());
+				}*/
 				
 				cDiag.ligne =cDiag.ligne+1; 
-				cDiag.colonne=cDiag.colonne+1; 
-				System.out.println(cDiag.toString());
-			
+				cDiag.colonne=cDiag.colonne+1;
+
 				if(cDiag.ligne == Constantes.TAILLE) 
 				{
 					premierdiagonale =false;
 					deuxiemediagonale=true;
-					cDiag = new Coord(9,9);
-					System.out.println("premier diagonale");
+					//début de la deuxième diagonal 
+					cDiag = new Coord(-1,10);
 						
 				}
 
@@ -46,16 +50,29 @@ public class JoueurAvance {
 			if(deuxiemediagonale == true) 
 			{	
 				
+				
+				cDiag.ligne =cDiag.ligne+1; 
+				cDiag.colonne=cDiag.colonne-1;
+				
+				System.out.println(cDiag.toString());	
+				
+				if(cDiag.ligne == Constantes.TAILLE) {
+					deuxiemediagonale=false;
+				}
 			}
 			
 			
 			if(premierdiagonale==false && deuxiemediagonale ==false) 
 			{
-				
+				cDiag = UtilitaireCollection.obtenirCoupPasDejaJouer(TableauCoups);
 			}
-				
+			coord = cDiag;
+			
 		}
-		return cDiag;
+		else if(!TableauCoups.isEmpty()){
+			
+		}
+		return coord;
 	
 	}
 	
