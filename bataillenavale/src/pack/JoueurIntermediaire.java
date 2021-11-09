@@ -15,6 +15,13 @@ public class JoueurIntermediaire {
 		Adjacent = new ArrayList<Coord>();
 	}
 	
+	/*
+	 * 
+	 * fontion qui s'occupe de generer un tir si il n'existe pas de coordonner adjacent alors il donne un coup aleatoire 
+	 * si une coordonner adjacente existe alors le prochaine coups sont le nord du navire touche ensuite le sud, est et enfin ouest 
+	 * 
+	 * @auteur Youcef mekki daouadji
+	 * */
 	public Coord getTir() 
 	{  
 		Coord c;
@@ -35,7 +42,10 @@ public class JoueurIntermediaire {
 		return c;
 		
 	}
-	
+	/*
+	 * @auteur Youcef mekki daouadji et  Antoine Bolduc 
+	 * une fonction qui s'oocupe de aviser si un tir a touche si oui alors nous ajoutant les coordonner adjacente a une liste et nous parcourant la liste dans la fonction gettir() en haut 
+	 * */
 	public void aviseTouche(Coord c) 
 	{
 		

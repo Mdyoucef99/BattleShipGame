@@ -12,6 +12,7 @@ public class JoueurAvance {
 	public List<Coord> Adjacent;
 	Coord cDiag = new Coord(-1,-1);
 	
+	
 	public JoueurAvance()
 	{
 		TableauCoups= new Vector();
@@ -21,27 +22,36 @@ public class JoueurAvance {
 	
 	public Coord getTir() 
 	{
-		Coord coord = new Coord(0,0);
+		Coord coord =cDiag;
 		int index=0;
-		if(TableauCoups.isEmpty()) 
+		
+		  while(Adjacent.isEmpty()==false) 
+		    {
+		    	coord=Adjacent.get(index);
+		    	Adjacent.remove(index);
+		    	while(!UtilitaireCollection.tableauContientCoord(TableauCoups, coord)) 
+		    	{
+			    	TableauCoups.add(coord);
+			    	return coord;
+		    	}
+		    	
+		    }
+		
+		if(Adjacent.isEmpty()) 
 		{
 			if(premierdiagonale ==true) 
 			{					
-				/*while(UtilitaireCollection.tableauContientCoord(TableauCoups,cDiag) || cDiag.ligne == Constantes.TAILLE-1) {
-					cDiag.ligne =cDiag.ligne+1; 
-					cDiag.colonne=cDiag.colonne+1;
-					System.out.println(cDiag.toString());
-				}*/
-				
 				cDiag.ligne =cDiag.ligne+1; 
 				cDiag.colonne=cDiag.colonne+1;
-
+				TableauCoups.add(cDiag);
+				
 				if(cDiag.ligne == Constantes.TAILLE) 
 				{
 					premierdiagonale =false;
 					deuxiemediagonale=true;
 					//début de la deuxième diagonal 
 					cDiag = new Coord(-1,10);
+					TableauCoups.add(cDiag);
 						
 				}
 
@@ -49,31 +59,27 @@ public class JoueurAvance {
 			
 			if(deuxiemediagonale == true) 
 			{	
-				
-				
 				cDiag.ligne =cDiag.ligne+1; 
 				cDiag.colonne=cDiag.colonne-1;
-				
+				TableauCoups.add(cDiag);
 				System.out.println(cDiag.toString());	
 				
-				if(cDiag.ligne == Constantes.TAILLE) {
+				if(cDiag.ligne == Constantes.TAILLE) 
+				{
 					deuxiemediagonale=false;
 				}
 			}
 			
-			
 			if(premierdiagonale==false && deuxiemediagonale ==false) 
 			{
 				cDiag = UtilitaireCollection.obtenirCoupPasDejaJouer(TableauCoups);
+				TableauCoups.add(cDiag);
 			}
+			
 			coord = cDiag;
-			
 		}
-		else if(!TableauCoups.isEmpty()){
-			
-		}
-		return coord;
 	
+		return coord;
 	}
 	
 
@@ -126,5 +132,4 @@ public class JoueurAvance {
 		
 	}	
 
-	
 }
