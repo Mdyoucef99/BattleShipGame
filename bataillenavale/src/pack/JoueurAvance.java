@@ -120,7 +120,7 @@ public class JoueurAvance {
 
                                                                                 deuxiemediagonale=true;
 
-                                                                                //début de la deuxième diagonal
+                                                                                //dï¿½but de la deuxiï¿½me diagonal
 
                                                                                 cDiag = new Coord(-1,10);
 
