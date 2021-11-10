@@ -1,4 +1,3 @@
-package pack;
 
 import java.awt.Toolkit;
 
@@ -72,11 +71,8 @@ public class DemarrerBatailleNavale {
 			// Petit message qui donne le temps de voir ce qui s'est passée.
 			JOptionPane.showMessageDialog(null,"Solution trouvée en " +
 			nbTirs 	+ 	" coups avec " + nbRepetitions + " répétition de tirs");
-			UtilitaireGrilleGui.reinitialiserGui(gui);
-			
 
 		}
-	
 	}
 	/**
 	 * Procédure qui 
@@ -126,21 +122,21 @@ public class DemarrerBatailleNavale {
 
 		else if(menu.equals(
 				Constantes.OPTIONS[Constantes.AVANCE])){
-
+		
 			JoueurAvance ordi = new JoueurAvance();
 			demarrerPartie(ordi, flotteOrdi, Constantes.AVANCE, gui);
 		}	
-		
-		
+		else if(menu.equals(
+				Constantes.OPTIONS[Constantes.EXPERT])) {
+			JoueurExpert ordi = new JoueurExpert();
+			demarrerPartie(ordi, flotteOrdi, Constantes.EXPERT, gui);
+		}
+				
 		// Le choix expert.
 		else
 			if(JOptionPane.showConfirmDialog(null,"Pas encore implémenté") == 
-			JOptionPane.CANCEL_OPTION) 
-			{
+			JOptionPane.CANCEL_OPTION)
 				System.exit(0);
-			}
-				
-		
 	}
 
 	/**
@@ -233,6 +229,7 @@ public class DemarrerBatailleNavale {
 			case Constantes.EXPERT :  {
 	
 				// Écrivez le code nécessaire ici
+				tir =((JoueurExpert) ordi).getTir();
 	
 			}break;
 		
@@ -275,6 +272,7 @@ public class DemarrerBatailleNavale {
 			case Constantes.EXPERT :  {
 	
 				// Écrivez le code nécessaire ici
+				((JoueurExpert) ordi).aviseTouche(tir);
 	
 			}break;
 			
