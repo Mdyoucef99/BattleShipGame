@@ -116,7 +116,7 @@ public class JoueurExpert {
 
                                                                     deuxiemediagonale=true;
 
-                                                                    //début de la deuxième diagonal
+                                                                    //dÃ©but de la deuxiÃ¨me diagonal
 
                                                                     cDiag = new Coord(-1,10);
 
@@ -228,7 +228,7 @@ public class JoueurExpert {
                                         	touche2 = true;
                                      	   System.out.println("pas de repetition");
                                      	  TableauCoups.add(temp3);                        
-                                          if(cDiag.ligne == 0) {
+                                          if(cDiag.ligne == 1) {
 
      
 
@@ -254,7 +254,7 @@ public class JoueurExpert {
                                         	touche2 = true;
                          
                                      	  TableauCoups.add(temp3);                        
-                                          if(cDiag.colonne == 0) {
+                                          if(cDiag.colonne == 1) {
 
      
 
