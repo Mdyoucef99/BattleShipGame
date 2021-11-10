@@ -1,31 +1,29 @@
+package pack;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 public class JoueurExpert {
 
-    public Vector TableauCoups;
+public Vector TableauCoups;
 
     
 
     boolean premierdiagonale = true;
 
     boolean deuxiemediagonale = false;
-    boolean premiereLigne = false;
-    boolean deuxiemeLigne = false;
-    boolean troisiemeLigne = false;
-    boolean quatriemeLigne = false;
+
+    boolean premiermillieu = false;
+
+    boolean deuxiememillieu = false;
     
-
-   
-
+    
     public List<Coord> Adjacent;
 
     Coord cDiag = new Coord(-1,-1);
 
-   
 
-   
 
     public JoueurExpert()
 
@@ -39,8 +37,6 @@ public class JoueurExpert {
 
 
 
-   
-
     public Coord getTir()
 
     {
@@ -49,14 +45,12 @@ public class JoueurExpert {
 
                     int index=0;
 
-                   
-
                    // UtilitaireGrilleGui.pause(1000);
                      while(Adjacent.isEmpty()==false)
                         {
 
                     	  
-                    	  
+
                                     coord=Adjacent.get(index);
 
                                     Adjacent.remove(index);
@@ -79,8 +73,6 @@ public class JoueurExpert {
                     if(Adjacent.isEmpty())
 
                     {
-
-
 
                                     if(premierdiagonale ==true)
 
@@ -116,7 +108,7 @@ public class JoueurExpert {
 
                                                                     deuxiemediagonale=true;
 
-                                                                    //début de la deuxième diagonal
+                                                                    //d�but de la deuxi�me diagonal
 
                                                                     cDiag = new Coord(-1,10);
 
@@ -147,8 +139,6 @@ public class JoueurExpert {
                                                     cDiag.colonne=cDiag.colonne-1;
 
 
-
-
                                                     System.out.println(cDiag.toString());      
 
                                                    
@@ -156,123 +146,97 @@ public class JoueurExpert {
                                                     if(cDiag.ligne == Constantes.TAILLE) {
 
                                                                     deuxiemediagonale=false;
-                                                                    premiereLigne = true;
-                                                                    cDiag = new Coord(0,0);
+                                                                    premiermillieu=true;
+                                                                    
+                                                                    cDiag = new Coord(4,-1);
 
                                                     }
 
                                     }
 
-                                   
+                                    
+                                    if(premiermillieu ==true)
 
-                                   
-
-                                    if(premiereLigne == true)
-                                 
-                                    {
-                                    	cDiag.ligne = cDiag.ligne +1;
-
-
-                                    	boolean touche2 =false;
-                                        Coord temp3= new Coord(cDiag.ligne, cDiag.colonne);
-                                        if(!UtilitaireCollection.tableauContientCoord(TableauCoups, temp3)) {
-
-                                        	touche2 = true;
-                                     	   System.out.println("pas de repetition");
-                                     	  TableauCoups.add(temp3);                        
-                                          if(cDiag.ligne == Constantes.TAILLE) {
-
-     
-                                              premiereLigne = false;
-                                              deuxiemeLigne = true;
-                                              cDiag = new Coord(9,0);
-
-                              }}
-                                        
-                                    }
-                                    if(deuxiemeLigne == true)
-                                        
-                                    {
-                                    	cDiag.colonne = cDiag.colonne +1;
-
-
-                                    	boolean touche3 =false;
-                                        Coord temp4= new Coord(cDiag.ligne, cDiag.colonne);
-                                        if(!UtilitaireCollection.tableauContientCoord(TableauCoups, temp4)) {
-
-                                        	touche3 = true;
-                                     	   System.out.println("pas de repetition");
-                                     	  TableauCoups.add(temp4);                        
-                                          if(cDiag.colonne == Constantes.TAILLE) {
-
-     
-                                           
-                                              deuxiemeLigne = false;
-                                              troisiemeLigne = true;
-                                              cDiag = new Coord(9,9);
-                                              
-
-                              }}
-                                        
-                                    }
-                                    if(troisiemeLigne == true)
-                                        
-                                    {
-                                    	cDiag.ligne = cDiag.ligne -1;
-
-
-                                    	boolean touche2 =false;
-                                        Coord temp3= new Coord(cDiag.ligne, cDiag.colonne);
-                                        if(!UtilitaireCollection.tableauContientCoord(TableauCoups, temp3)) {
-
-                                        	touche2 = true;
-                                     	   System.out.println("pas de repetition");
-                                     	  TableauCoups.add(temp3);                        
-                                          if(cDiag.ligne == 1) {
-
-     
-
-                                              troisiemeLigne = false;
-                                              quatriemeLigne = true;
-                                              cDiag = new Coord(0,9);
-                                              
-
-                              }}
-                                        
-                                        
-                                    }
-                                    if(quatriemeLigne == true)
-                                        
-                                    {
-                                    	cDiag.colonne = cDiag.colonne -1;
-
-
-                                    	boolean touche2 =false;
-                                        Coord temp3= new Coord(cDiag.ligne, cDiag.colonne);
-                                        if(!UtilitaireCollection.tableauContientCoord(TableauCoups, temp3)) {
-
-                                        	touche2 = true;
-                         
-                                     	  TableauCoups.add(temp3);                        
-                                          if(cDiag.colonne == 1) {
-
-     
-
-                         
-                                              quatriemeLigne = false;
-                                           
-                                              
-
-                              }}
-                                        
-                                        
-                                    }
-                                    if(premierdiagonale==false && deuxiemediagonale ==false && premiereLigne ==false
-                                    		&& deuxiemeLigne == false && troisiemeLigne == false && quatriemeLigne== false)
-
-                                    {
+                                    {                           
                                     	
 
+                                                        cDiag.colonne =cDiag.colonne+1;
+                       
+                                                       Coord temp= new Coord(cDiag.ligne, cDiag.colonne);
+                                                       if(!UtilitaireCollection.tableauContientCoord(TableauCoups, temp)) {
+
+
+                                                    	   TableauCoups.add(temp);
+                                                    	   System.out.println("pas de rep");
+
+                                                    
+                                                       }
+
+
+
+                                                       
+                                            
+
+                                                    if(cDiag.colonne == Constantes.TAILLE)
+
+                                                    {
+
+                                                                  
+                                                                    premiermillieu=false;
+                                                                    deuxiememillieu = true;
+
+                                                                    //d�but de la deuxi�me diagonal
+
+                                                                    cDiag = new Coord(-1,4);
+
+                                                    }
+
+
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    if(deuxiememillieu ==true)
+
+                                    {                           
+                                    	
+
+                                                        cDiag.ligne =cDiag.ligne+1;
+                       
+                                                       Coord temp= new Coord(cDiag.ligne, cDiag.colonne);
+                                                       if(!UtilitaireCollection.tableauContientCoord(TableauCoups, temp)) {
+
+
+                                                    	   TableauCoups.add(temp);
+                                                    	   System.out.println("pas de rep");
+
+                                                    
+                                                       }
+
+                                               
+                                                    if(cDiag.ligne == Constantes.TAILLE)
+
+                                                    {
+
+    
+                                                                    deuxiememillieu = false;
+
+                                                                    System.out.println("Deuxieme millieu finie");
+                                                                  
+                                                                  
+
+                                                    }
+
+
+                                        
+                                    }
+                                   
+                                   
+
+                                    if(premierdiagonale==false && deuxiemediagonale ==false && premiermillieu==false &&  deuxiememillieu ==false)
+                                    {
 
                                                     cDiag = UtilitaireCollection.obtenirCoupPasDejaJouer(TableauCoups);
 
@@ -280,9 +244,9 @@ public class JoueurExpert {
 
                                     }
 
-                                    coord = cDiag;
-
                                    
+                                    coord = cDiag;
+          
 
                     }
 
@@ -292,10 +256,7 @@ public class JoueurExpert {
 
     }
 
-   
-
-
-
+ 
     public void aviseTouche(Coord c)
 
     {
@@ -392,6 +353,13 @@ public class JoueurExpert {
 
     }             
 
+
+
+   
+
+	
+	
+	
 
 
    

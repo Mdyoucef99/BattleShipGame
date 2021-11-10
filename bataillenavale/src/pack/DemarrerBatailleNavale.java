@@ -1,4 +1,4 @@
-
+package pack;
 import java.awt.Toolkit;
 
 
@@ -72,6 +72,8 @@ public class DemarrerBatailleNavale {
 			JOptionPane.showMessageDialog(null,"Solution trouvée en " +
 			nbTirs 	+ 	" coups avec " + nbRepetitions + " répétition de tirs");
 
+			
+			UtilitaireGrilleGui.reinitialiserGui(gui); 
 		}
 	}
 	/**
